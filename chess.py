@@ -1,7 +1,5 @@
 import pygame
 # import random --> IA with different difficulties
-import pygame
-
 pygame.init()
 
 # Load the image
