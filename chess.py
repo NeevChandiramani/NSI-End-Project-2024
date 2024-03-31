@@ -1,7 +1,6 @@
 import pygame
 # import random --> IA with different difficulties
-
-# import pygame
+import pygame
 
 pygame.init()
 
@@ -12,6 +11,7 @@ chessboard = pygame.image.load("chessboard.png")
 screen = pygame.display.set_mode(chessboard.get_size())
 
 # Update the display
+screen.blit(chessboard, (0, 0))
 pygame.display.flip()
 
 # Wait for the user to close the window
@@ -19,7 +19,9 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            exit(0) 
+            exit(0)
+pygame.init()
+
 
 pion1 = ('blanc','cavalier')
 
