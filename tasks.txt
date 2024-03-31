@@ -1,3 +1,12 @@
 // Les taches à se départager --> #Ah pas con
--> en groupe : décider structure programme
+-> en groupe : décider structure du programme
 
+
+// Tache : creation de l'arborescence du projet --> #Ah pas con 
+
+
+G = {"A" : ["" for i in range(8)],
+"B" : ["" for i in range(8)],
+"C" : ["" for i in range(8)],
+"D" : ["" for i in range(8)],
+}
