@@ -1,7 +1,8 @@
 // Les taches à se départager --> #Ah pas con
 -> en groupe : décider structure du programme
-
+- créer dico des déplacements
 
 // Tache : creation de l'arborescence du projet --> #Ah pas con 
 
-
+ - chaque pion a un tuple qui lui attribue ses proprétés (couleur, type)
+ - un dictionnaire permet de voir les déplacements possibles pour chaque type de pion
