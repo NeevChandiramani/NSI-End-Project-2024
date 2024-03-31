@@ -1,2 +1,3 @@
-// Les taches à se départager --> 
+// Les taches à se départager --> #Ah pas con
+-> en groupe : décider structure programme
 
