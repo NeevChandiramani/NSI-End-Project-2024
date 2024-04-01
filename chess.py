@@ -27,9 +27,18 @@ prop = {'cavalier' : ('',''), 'pion' : ('','')}
 
 #grid of 8x8 
 def grid():
+    """Create a dictionary representing an 8x8 chessboard grid.
+
+    The keys of the dictionary are the ASCII codes for the letters 'A' to 'H',
+    and the values are lists representing the rows of the grid, with each
+    element of the list representing a square.
+
+    Returns:
+        A dictionary with keys ranging from 65 to 72, inclusive, and values
+        that are lists of length 8.
+    """
     H8 = {}
     for i in range(8):
-        H8[ord(65)+i] = ["","","","","","","",""]
-    return(H8)
+        H8[ord('A')+i] = [""]*8  # Create a new list of length 8
+    return H8
 #print(grid())
-
