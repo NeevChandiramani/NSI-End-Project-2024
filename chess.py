@@ -22,5 +22,3 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 # Get the position of the mouse click
                 mouse_pos = pygame.mouse.get_pos()
-                # TODO: Implement logic to handle the user's move based on the mouse position
-                # For example, you can check if the user clicked on a specific chess piece and move it accordingly
