@@ -10,6 +10,8 @@ chessboard = pygame.image.load("chessboard.png")
 # Set the display mode
 screen = pygame.display.set_mode(chessboard.get_size())
 
+# Il faudrait enlever la partie avec le noir en dessous de l'image (j'ai pas réussi à le faire)
+
 # Set the title of the window 
 pygame.display.set_caption("Chess")
 
