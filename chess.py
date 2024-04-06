@@ -19,3 +19,15 @@ while True:
             pygame.quit()
             exit(0)
 
+            # Create a dictionary for each box in the chessboard with the png file
+            chessboard_boxes = {
+                "a1": pygame.image.load("a1.png"),
+                "a2": pygame.image.load("a2.png"),
+                "a3": pygame.image.load("a3.png"),
+                # ... continue for all boxes
+            }
+
+            # Replace the placeholder code with the following loop to display the chessboard boxes
+            for box, image in chessboard_boxes.items():
+                screen.blit(image, (0, 0))  # Replace (0, 0) with the appropriate coordinates for each box
+            pygame.display.flip()
