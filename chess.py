@@ -17,9 +17,7 @@ pygame.display.set_caption("Chess")
 screen.blit(chessboard, (0, 0))
 
 # Update the display
-pygame.display.flip()
-
- 
+pygame.display.update()
 
 # Wait for the user to close the window
 while True:
