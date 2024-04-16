@@ -1,6 +1,5 @@
 import pygame
 #import random
-#IA with different difficulties
 
 p_b_1 = ("pion","blanc")
 p_b_2 = ("pion","blanc")
@@ -69,13 +68,25 @@ def case(s):
 print(case("A2"))
 
 def deplas(s):
-    r = [""]
-    colonne = s[0]
+    r = []
+    colonne = ord(s[0])-65
     ligne = s[1]
     a = case(s)
     ( tipe , couleur ) = a
     if tipe == "" :
         return []
+    else:
+        if tipe == "pion":
+            if couleur == "noir":
+                ligne = ligne - 1
+            else:
+                ligne = ligne + 1
+            r.append(chr(ligne+65) + str(colonne))
+            return r
+        
+
+            
+    
 
 
 
