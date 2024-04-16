@@ -7,4 +7,3 @@
 
  - chaque pion a un tuple qui lui attribue ses propretes (couleur, type)
  - un dictionnaire permet de voir les deplacements possibles pour chaque type de pion
-caca
