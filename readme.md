@@ -7,7 +7,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 [Provide instructions on how to install and set up your project]
@@ -17,6 +16,3 @@
 
 ## Contributing
 [Explain how others can contribute to your project]
-
-## License
-[Specify the license under which your project is distributed]

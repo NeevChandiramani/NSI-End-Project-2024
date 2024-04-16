@@ -1,9 +1,21 @@
-// Les taches a se dapartager --> #Ah pas con
+// Les taches a se dapartager -->
 -> en groupe : decider structure du programme
 - creer dico des deplacements
 - creer inteface graphique
 
-// Tache : creation de l'arborescence du projet --> #Ah pas con 
+// Tache : creation de l'arborescence du projet -->
 
  - chaque pion a un tuple qui lui attribue ses propretes (couleur, type)
  - un dictionnaire permet de voir les deplacements possibles pour chaque type de pion
+
+
+Repartition des taches :
+
+Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA) --> (avec une interface graphique)
+       -  
+
+Erwan : -   creation de la fonction deplacement qui permet de dire si un pion qui veut aller sur une case peut y aller en respectant les regles
+            (par une autre fonction qui dit les deplacements possibles d'un pion)
+        -   creation d'une fonction permettant de voir une situation d'echec
+
+Ayoub : 
