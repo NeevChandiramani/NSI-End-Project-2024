@@ -18,4 +18,4 @@ Erwan : -   creation de la fonction deplacement qui permet de dire si un pion qu
             (par une autre fonction qui dit les deplacements possibles d'un pion)
         -   creation d'une fonction permettant de voir une situation d'echec
 
-Ayoub : ALLAH AKBAR
+Ayoub : 
