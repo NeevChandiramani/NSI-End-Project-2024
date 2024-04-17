@@ -78,18 +78,17 @@ def deplas(s):
             if couleur == "blanc":
                 if case_c_l(colonne,ligne+1) == vide:
                     r.append(chr(colonne+65)+str(ligne+2))
-                if colonne-1 >= 0 and ligne+1 < 8 and case_c_l(colonne-1,ligne+1)[1] != couleur:
+                if colonne-1 >= 0 and ligne+1 < 8 and case_c_l(colonne-1,ligne+1)[1] == "noir":
                     r.append(chr(colonne-1+65)+str(ligne+1+1))
-                if colonne+1 < 8 and ligne+1 < 8 and case_c_l(colonne+1,ligne+1)[1] != couleur:
+                if colonne+1 < 8 and ligne+1 < 8 and case_c_l(colonne+1,ligne+1)[1] == "noir":
                     r.append(chr(colonne+1+65)+str(ligne+1+1))
             else:
                 if case_c_l(colonne,ligne-1) == vide:
                     r.append(chr(colonne+65)+str(ligne))
-                if colonne-1 >= 0 and ligne-1 >=0 and case_c_l(colonne-1,ligne-1)[1] != couleur:
+                if colonne-1 >= 0 and ligne-1 >=0 and case_c_l(colonne-1,ligne-1)[1] == "blanc":
                     r.append(chr(colonne-1+65)+str(ligne+1-1))
-                if colonne+1 < 8 and ligne-1 >=0 and case_c_l(colonne+1,ligne-1)[1] != couleur:
+                if colonne+1 < 8 and ligne-1 >=0 and case_c_l(colonne+1,ligne-1)[1] == "blanc":
                     r.append(chr(colonne+1+65)+str(ligne+1-1))
-
         elif typ == "tour":
             continuer = True
             i = 1
@@ -100,7 +99,7 @@ def deplas(s):
                     if case_c_l(colonne+i,ligne)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne+i,ligne)[1] != couleur:
+                        if case_c_l(colonne+i,ligne)[1] != couleur and case_c_l(colonne+i,ligne)[1] != "":
                             continuer = False
                         r.append(chr(colonne+i+65)+str(ligne+1))
                         i = i + 1
@@ -113,7 +112,7 @@ def deplas(s):
                     if case_c_l(colonne-i,ligne)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne-i,ligne)[1] != couleur:
+                        if case_c_l(colonne-i,ligne)[1] != couleur and case_c_l(colonne-i,ligne)[1] != "":
                             continuer = False
                         r.append(chr(colonne-i+65)+str(ligne+1))
                         i = i + 1
@@ -126,8 +125,8 @@ def deplas(s):
                     if case_c_l(colonne,ligne-i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne,ligne-i)[1] != couleur:
-                            ontinuer = False
+                        if case_c_l(colonne,ligne-i)[1] != couleur and case_c_l(colonne,ligne-i)[1] != "":
+                            continuer = False
                         r.append(chr(colonne+65)+str(ligne+1-i))
                         i = i + 1
             continuer = True
@@ -139,7 +138,7 @@ def deplas(s):
                     if case_c_l(colonne,ligne+i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne,ligne+i)[1] != couleur:
+                        if case_c_l(colonne,ligne+i)[1] != couleur and case_c_l(colonne,ligne+i)[1] != "":
                             continuer = False
                         r.append(chr(colonne+65)+str(ligne+1+i))
                         i = i + 1
@@ -170,7 +169,7 @@ def deplas(s):
                     if case_c_l(colonne+i,ligne+i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne+i,ligne+i)[1] != couleur:
+                        if case_c_l(colonne+i,ligne+i)[1] != couleur and case_c_l(colonne+i,ligne+i)[1] != "":
                             continuer = False
                         r.append(chr(colonne+i+65)+str(ligne+1+i))
                         i = i + 1
@@ -183,7 +182,7 @@ def deplas(s):
                     if case_c_l(colonne-i,ligne+i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne-i,ligne+i)[1] != couleur:
+                        if case_c_l(colonne-i,ligne+i)[1] != couleur and case_c_l(colonne-i,ligne+i)[1] != "":
                             continuer = False
                         r.append(chr(colonne-i+65)+str(ligne+1+i))
                         i = i + 1
@@ -196,7 +195,7 @@ def deplas(s):
                     if case_c_l(colonne+i,ligne-i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne+i,ligne-i)[1] != couleur:
+                        if case_c_l(colonne+i,ligne-i)[1] != couleur and case_c_l(colonne+i,ligne-i)[1] != "":
                             ontinuer = False
                         r.append(chr(colonne+65+i)+str(ligne+1-i))
                         i = i + 1
@@ -209,7 +208,7 @@ def deplas(s):
                     if case_c_l(colonne-i,ligne-i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne-i,ligne-i)[1] != couleur:
+                        if case_c_l(colonne-i,ligne-i)[1] != couleur and case_c_l(colonne-i,ligne-i)[1] != "":
                             continuer = False
                         r.append(chr(colonne+65-i)+str(ligne+1-i))
                         i = i + 1
@@ -223,7 +222,7 @@ def deplas(s):
                     if case_c_l(colonne+i,ligne)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne+i,ligne)[1] != couleur:
+                        if case_c_l(colonne+i,ligne)[1] != couleur and case_c_l(colonne+i,ligne)[1] != "":
                             continuer = False
                         r.append(chr(colonne+i+65)+str(ligne+1))
                         i = i + 1
@@ -236,7 +235,7 @@ def deplas(s):
                     if case_c_l(colonne-i,ligne)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne-i,ligne)[1] != couleur:
+                        if case_c_l(colonne-i,ligne)[1] != couleur and case_c_l(colonne-i,ligne)[1] != "":
                             continuer = False
                         r.append(chr(colonne-i+65)+str(ligne+1))
                         i = i + 1
@@ -249,8 +248,8 @@ def deplas(s):
                     if case_c_l(colonne,ligne-i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne,ligne-i)[1] != couleur:
-                            ontinuer = False
+                        if case_c_l(colonne,ligne-i)[1] != couleur and case_c_l(colonne,ligne-i)[1] != "":
+                            continuer = False
                         r.append(chr(colonne+65)+str(ligne+1-i))
                         i = i + 1
             continuer = True
@@ -262,7 +261,7 @@ def deplas(s):
                     if case_c_l(colonne,ligne+i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne,ligne+i)[1] != couleur:
+                        if case_c_l(colonne,ligne+i)[1] != couleur and case_c_l(colonne,ligne+i)[1] != "":
                             continuer = False
                         r.append(chr(colonne+65)+str(ligne+1+i))
                         i = i + 1
@@ -275,7 +274,7 @@ def deplas(s):
                     if case_c_l(colonne+i,ligne+i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne+i,ligne+i)[1] != couleur:
+                        if case_c_l(colonne+i,ligne+i)[1] != couleur and case_c_l(colonne+i,ligne+i)[1] !="":
                             continuer = False
                         r.append(chr(colonne+i+65)+str(ligne+1+i))
                         i = i + 1
@@ -288,7 +287,7 @@ def deplas(s):
                     if case_c_l(colonne-i,ligne+i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne-i,ligne+i)[1] != couleur:
+                        if case_c_l(colonne-i,ligne+i)[1] != couleur and case_c_l(colonne-i,ligne+i)[1] != "":
                             continuer = False
                         r.append(chr(colonne-i+65)+str(ligne+1+i))
                         i = i + 1
@@ -301,7 +300,7 @@ def deplas(s):
                     if case_c_l(colonne+i,ligne-i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne+i,ligne-i)[1] != couleur:
+                        if case_c_l(colonne+i,ligne-i)[1] != couleur and case_c_l(colonne+i,ligne-i)[1] != "":
                             ontinuer = False
                         r.append(chr(colonne+65+i)+str(ligne+1-i))
                         i = i + 1
@@ -314,7 +313,7 @@ def deplas(s):
                     if case_c_l(colonne-i,ligne-i)[1] == couleur:
                         continuer = False
                     else:
-                        if case_c_l(colonne-i,ligne-i)[1] != couleur:
+                        if case_c_l(colonne-i,ligne-i)[1] != couleur and case_c_l(colonne-i,ligne-i)[1] != "":
                             continuer = False
                         r.append(chr(colonne+65-i)+str(ligne+1-i))
                         i = i + 1
@@ -336,7 +335,7 @@ def deplas(s):
             if colonne+1 <8 and ligne-1 >= 0 and case_c_l(colonne+1,ligne-1)[1] != couleur:
                 r.append(chr(colonne+1+65)+str(ligne+1-1))
         return r
-            
+
 
 
 
