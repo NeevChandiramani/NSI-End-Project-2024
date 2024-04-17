@@ -58,43 +58,163 @@ Echequier = [[t_b_1,c_b_1,f_b_1,q_b,k_b,f_b_2,c_b_2,t_b_2],
              [p_n_1,p_n_2,p_n_3,p_n_4,p_n_5,p_n_6,p_n_7,p_n_8],
              [t_n_1,c_n_1,f_n_1,q_n,k_n,f_n_2,c_n_2,t_n_2]]
 
-cases_existantes = []
-
 def case(s):
     global Echequier
-    return Echequier[ord(s[0])-65][int(s[1])-1]
+    return Echequier[int(s[1])-1][ord(s[0])-65]
 
-
-print(case("A2"))
+def case_c_l(colonne,ligne):
+    global Echequier
+    return Echequier[ligne][colonne]
 
 def deplas(s):
     r = []
+    (typ,couleur) = case(s)
     colonne = ord(s[0])-65
-    ligne = s[1]
-    a = case(s)
-    ( tipe , couleur ) = a
-    if tipe == "" :
-        return []
-    else:
-        if tipe == "pion":
-            if couleur == "noir":
-                ligne = ligne - 1
+    ligne = int(s[1])-1
+    if typ == "":
+        return r
+    else :
+        if typ == "pion":
+            if couleur == "blanc":
+                if case_c_l(colonne,ligne+1) == vide:
+                    r.append(chr(colonne+65)+str(ligne+2))
+                
             else:
-                ligne = ligne + 1
-            r.append(chr(ligne+65) + str(colonne))
-            return r
-        
+                if case_c_l(colonne,ligne-1) == vide:
+                    r.append(chr(colonne+65)+str(ligne))
 
+        elif typ == "tour":
+            if couleur == "blanc":
+                continuer = True
+                i = 1
+                while continuer :
+                    if colonne + i >= 8:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne+i,ligne)[1] == "blanc":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne+i,ligne)[1] == "noir":
+                                continuer = False
+                            r.append(chr(colonne+i+65)+str(ligne+1))
+                            i = i + 1
+                continuer = True
+                i = 1
+                while continuer :
+                    if colonne - i < 0:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne-i,ligne)[1] == "blanc":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne-i,ligne)[1] == "noir":
+                                continuer = False
+                            r.append(chr(colonne-i+65)+str(ligne+1))
+                            i = i + 1
+                continuer = True
+                i = 1
+                while continuer :
+                    if ligne - i < 0:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne,ligne-i)[1] == "blanc":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne,ligne-i)[1] == "noir":
+                                continuer = False
+                            r.append(chr(colonne+65)+str(ligne+1-i))
+                            i = i + 1
+                continuer = True
+                i = 1
+                while continuer :
+                    if ligne + i >= 8:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne,ligne+i)[1] == "blanc":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne,ligne+i)[1] == "noir":
+                                continuer = False
+                            r.append(chr(colonne+65)+str(ligne+1+i))
+                            i = i + 1
+            else:
+                continuer = True
+                i = 1
+                while continuer :
+                    if colonne + i >= 8:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne+i,ligne)[1] == "noir":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne+i,ligne)[1] == "blanc":
+                                continuer = False
+                            r.append(chr(colonne+i+65)+str(ligne+1))
+                            i = i + 1
+                continuer = True
+                i = 1
+                while continuer :
+                    if colonne - i < 0:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne-i,ligne)[1] == "noir":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne-i,ligne)[1] == "blanc":
+                                continuer = False
+                            r.append(chr(colonne-i+65)+str(ligne+1))
+                            i = i + 1
+                continuer = True
+                i = 1
+                while continuer :
+                    if ligne - i < 0:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne,ligne-i)[1] == "noir":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne,ligne-i)[1] == "blanc":
+                                continuer = False
+                            r.append(chr(colonne+65)+str(ligne+1-i))
+                            i = i + 1
+                continuer = True
+                i = 1
+                while continuer :
+                    if ligne + i >= 8:
+                        continuer = False
+                    else:
+                        if case_c_l(colonne,ligne+i)[1] == "noir":
+                            continuer = False
+                        else:
+                            if case_c_l(colonne,ligne+i)[1] == "blanc":
+                                continuer = False
+                            r.append(chr(colonne+65)+str(ligne+1+i))
+                            i = i + 1
+        elif typ == "cavalier":
+            if colonne+2 < 8 and ligne+1 < 8 and case_c_l(colonne+2,ligne+1)[1] != couleur:
+                r.append(chr(colonne+2+65)+str(ligne+1+1))
+            if colonne+1 < 8 and ligne+2 < 8 and case_c_l(colonne+1,ligne+2)[1] != couleur:
+                r.append(chr(colonne+1+65)+str(ligne+1+2))
+            if colonne-2 >= 0 and ligne+1 < 8 and case_c_l(colonne-2,ligne+1)[1] != couleur:
+                r.append(chr(colonne-2+65)+str(ligne+1+1))
+            if colonne-1 >= 0 and ligne+2 < 8 and case_c_l(colonne-1,ligne+2)[1] != couleur:
+                r.append(chr(colonne-1+65)+str(ligne+1+2))
+            if colonne+2 < 8 and ligne-1 >= 0 and case_c_l(colonne+2,ligne-1)[1] != couleur:
+                r.append(chr(colonne+2+65)+str(ligne+1-1))
+            if colonne+1 < 8 and ligne-2 >= 0 and case_c_l(colonne+1,ligne-2)[1] != couleur:
+                r.append(chr(colonne+1+65)+str(ligne+1-2))
+            if colonne-1 >= 0 and ligne-2 >= 0 and case_c_l(colonne-1,ligne-2)[1] != couleur:
+                r.append(chr(colonne-1+65)+str(ligne+1-2))
+            if colonne-2 >= 0 and ligne-1 >= 0 and case_c_l(colonne-2,ligne-1)[1] != couleur:
+                r.append(chr(colonne-2+65)+str(ligne+1-1))
+        elif typ ==  "fou":
+            print()
+        elif typ == "reine":
+            print()
+        elif typ == "roi":
+            print()
+        return r
             
-    
-
-
-
-
-
-
-
-
 
 
 
