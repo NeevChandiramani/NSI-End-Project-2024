@@ -78,10 +78,17 @@ def deplas(s):
             if couleur == "blanc":
                 if case_c_l(colonne,ligne+1) == vide:
                     r.append(chr(colonne+65)+str(ligne+2))
-                
+                if colonne-1 >= 0 and ligne+1 < 8 and case_c_l(colonne-1,ligne+1)[1] != couleur:
+                    r.append(chr(colonne-1+65)+str(ligne+1+1))
+                if colonne+1 < 8 and ligne+1 < 8 and case_c_l(colonne+1,ligne+1)[1] != couleur:
+                    r.append(chr(colonne+1+65)+str(ligne+1+1))
             else:
                 if case_c_l(colonne,ligne-1) == vide:
                     r.append(chr(colonne+65)+str(ligne))
+                if colonne-1 >= 0 and ligne-1 >=0 and case_c_l(colonne-1,ligne-1)[1] != couleur:
+                    r.append(chr(colonne-1+65)+str(ligne+1-1))
+                if colonne+1 < 8 and ligne-1 >=0 and case_c_l(colonne+1,ligne-1)[1] != couleur:
+                    r.append(chr(colonne+1+65)+str(ligne+1-1))
 
         elif typ == "tour":
             continuer = True
