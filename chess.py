@@ -336,6 +336,21 @@ def deplas(s):
                 r.append(chr(colonne+1+65)+str(ligne+1-1))
         return r
 
+def echec(couleur):
+    global Echequier
+    for i in range(8):
+        for j in range(8):
+            if case(chr(i+65)+str(j)) == ("roi",couleur):
+                c = chr(i+65)+str(j)
+    for i in range(8):
+        for j in range(8):
+            a = chr(i+65)+str(j)
+            if case(a)[1] != couleur and case(a)[1] != "":
+                for i in range(len(deplas(a))):
+                    if deplas(a)[i] == c :
+                        return True
+    return False
+
 
 
 
