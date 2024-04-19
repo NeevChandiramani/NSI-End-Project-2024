@@ -66,6 +66,13 @@ def case_c_l(colonne,ligne):
     global Echequier
     return Echequier[ligne][colonne]
 
+def mouvement(de_la,vers_la):
+    global Echequier
+    co1 = (int(de_la[1]),ord(de_la[0])-65)
+    co2 = (int(vers_la[1]),ord(vers_la[0])-65)
+    Echequier[co2[0]][co2[1]] = Echequier[co1[0]][co1[1]]
+    Echequier[co1[0]][co1[1]] = vide
+
 def deplas(s):
     r = []
     (typ,couleur) = case(s)
@@ -350,6 +357,16 @@ def echec(couleur):
                     if deplas(a)[i] == c :
                         return True
     return False
+
+def depla_possible(case_dep,case_ari):
+    pion = case(case_dep)
+    oui = False
+    for i in range(len(deplas(case_dep))):
+        if case_ari == deplas(case_dep)[i]:
+            oui = True
+    if oui:
+        
+
 
 
 

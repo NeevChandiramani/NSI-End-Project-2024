@@ -13,8 +13,8 @@ Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode 
        - 
 
 Erwan : -   creation de la fonction deplacement qui permet de dire si un pion qui veut aller sur une case peut y aller en respectant les regles
-            (par une autre fonction qui dit les deplacements possibles d'un pion)
-        -   creation d'une fonction permettant de voir une situation d'echec
+            (par une autre fonction qui dit les deplacements possibles d'un pion -> fait)
+        -   creation d'une fonction permettant de voir une situation d'echec -> fait
 
 Ayoub : - Déplacements des pions sur l'échéquier et création des différents retangles qui permetteront à pygame de considérer les pions comme des rectangles
         - Création de l'échéquier et des pions
