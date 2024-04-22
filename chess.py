@@ -358,14 +358,26 @@ def echec(couleur):
                         return True
     return False
 
+def echec_et_mat(couleur):
+  global Echequier
+  for i in range(8):
+      for j in range(8):
+          if case(chr(i+65)+str(j)) == ("roi",couleur):
+              c = chr(i+65)+str(j)
+  #faudra voir si 1: il y a au moins 2 pièces adverses qui le menace 2: en se déplaçant ça change rien donc il faudra utiliser depla_possible
+
 def depla_possible(case_dep,case_ari):
-    pion = case(case_dep)
-    oui = False
-    for i in range(len(deplas(case_dep))):
-        if case_ari == deplas(case_dep)[i]:
-            oui = True
-    if oui:
-        
+  global Echequier  
+  pion = case(case_dep)
+  oui = False
+  for i in range(len(deplas(case_dep))):
+      if case_ari == deplas(case_dep)[i]:
+        oui = True
+  if oui:
+    Echequier_provi = []
+    for i in range(len(Echequier)):
+      Echequier_provi[i] = Echequier[i].copy
+    
 
 
 
