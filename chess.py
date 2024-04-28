@@ -422,11 +422,7 @@ def depla_possible(case_dep,case_ari):
       Echequier_provi[i] = Echequier[i].copy
 
 
-    
-
-
-
-
+## Pygame
 
 pygame.init()
 
