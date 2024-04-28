@@ -19,7 +19,7 @@ To install and set up the project, follow these steps:
 To play the game, run `python3 chess.py` in your terminal. The game is played in a standard 8x8 chess board.
 
 ## Game Rules
-# tbw
+// tbw
 
 ## Contributing
 We welcome contributions to this project. If you would like to contribute, please fork the repository and submit a pull request.
