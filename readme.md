@@ -1,7 +1,7 @@
 # Chess Game using Python
 
 ## Description
-This project is a basic chess game implemented using Pygame. It was created by [@Neev Chandiramani](https://github.com/neevchandiramani), [@Erwan](https://github.com/Arisen3798), and [@Ayoub](https://github.com/FloLoww) as part of a school project.
+This project is a basic chess game implemented using Pygame. It was created by [@Neev Chandiramani](https://github.com/neevchandiramani), [@Arisen3798](https://github.com/Arisen3798), and [@FloLoww](https://github.com/FloLoww) as part of a school project.
 
 ## Table of Contents
 - [Installation](#installation)
