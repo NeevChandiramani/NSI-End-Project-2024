@@ -5,9 +5,11 @@ import webbrowser
 
 #Les deux lignes suivantes sont issues d'un forum : https://stackoverflow.com/questions/19954469/how-to-get-the-resolution-of-a-monitor-in-pygame et elles permettent
 #de trouver la résolution de l'écran ainsi que de créer un objet écran de la résolution de celui-ci
-infoObject = pygame.display.Info()
-screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
-taille_case = infoObject.current_h * 8
+#infoObject = pygame.display.Info()
+#screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
+#taille_case = infoObject.current_h * 8
+# ligne 8 à 10 font tout buger, t'as fait quoi ayoub?!
+
 #import random
 
 p_b_1 = ("pion","blanc")
@@ -58,37 +60,37 @@ q_n = ("reine","noir")
 vide = ("","")
 
 #j'ai besoin d'aide pour les positions
-Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "A4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "A7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A8": pygame.Rect((positionx, positiony), (taille_case, taille_case)),
+#Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "A4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "A7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A8": pygame.Rect((positionx, positiony), (taille_case, taille_case)),
+#
+#                   "B1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "B4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "B7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#
+#                   "C1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "C4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "C7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#
+#                   "D1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "D4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "D7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#
+#                   "E1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "E4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "E7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#
+#                   "F1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "F4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "F7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#
+#                   "G1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "G4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+#                   "G7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
 
-                   "B1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "B4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "B7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "B8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-
-                   "C1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "C4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "C7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "C8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-
-                   "D1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "D4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "D7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "D8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-
-                   "E1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "E4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "E7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "E8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-
-                   "F1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "F4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "F7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "F8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-
-                   "G1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "G4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "G7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "G8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-
-                   "H1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "H4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
-                   "H7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), }
+ #                  "H1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+ #                  "H4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
+ #                  "H7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), }
 
 
 Echequier = [[t_b_1,c_b_1,f_b_1,q_b,k_b,f_b_2,c_b_2,t_b_2],
