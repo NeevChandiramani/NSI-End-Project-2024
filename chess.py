@@ -12,7 +12,6 @@ time.sleep(10)
 #taille_case = infoObject.current_h * 8
 # ligne 8 à 10 font tout buger, t'as fait quoi ayoub?!
 
-#import random
 
 p_b_1 = ("pion","blanc")
 p_b_2 = ("pion","blanc")
