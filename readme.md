@@ -13,7 +13,8 @@ This project is a basic chess game implemented using Pygame. It was created by [
 To install and set up the project, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/NeevChandiramani/NSI-End-Project.git`
-2. Run the python program: `python3 chess.py`
+2. Navigate to the directory `cd NSI-End-Project`
+3. Run the python program: `python3 chess.py`
 
 ## Usage
 To play the game, run `python3 chess.py` in your terminal. The game is played in a standard 8x8 chess board.
