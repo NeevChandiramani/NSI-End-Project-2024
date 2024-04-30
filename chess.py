@@ -1,4 +1,8 @@
 import pygame
+import webbrowser
+
+#webbrowser.open('http://chess.neevchandiramani.com')
+
 #Les deux lignes suivantes sont issues d'un forum : https://stackoverflow.com/questions/19954469/how-to-get-the-resolution-of-a-monitor-in-pygame et elles permettent
 #de trouver la résolution de l'écran ainsi que de créer un objet écran de la résolution de celui-ci
 infoObject = pygame.display.Info()
