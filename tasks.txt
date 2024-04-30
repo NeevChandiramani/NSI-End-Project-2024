@@ -10,9 +10,9 @@
 Répartition des tâches :
 
 Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA) --> (avec une interface graphique)
-       - Faire un site web avec les règles des échecs pour l'utilisateur 
 
-Erwan : 
+
+Erwan : - trouver des tâches à faire 
 
 Ayoub : - Déplacements des pions sur l'échéquier et création des différents retangles qui permetteront à pygame de considérer les pions comme des rectangles
         - Création de l'échéquier et des pions
