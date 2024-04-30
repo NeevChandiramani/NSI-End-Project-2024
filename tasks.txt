@@ -10,7 +10,7 @@
 Répartition des tâches :
 
 Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA) --> (avec une interface graphique)
-       - 
+       - Faire un site web avec les règles des échecs pour l'utilisateur 
 
 Erwan : 
 
