@@ -1,7 +1,9 @@
 import pygame
 import webbrowser
+import time
 
-#webbrowser.open('http://chess.neevchandiramani.com')
+webbrowser.open('http://chess.neevchandiramani.com')
+time.sleep(10)
 
 #Les deux lignes suivantes sont issues d'un forum : https://stackoverflow.com/questions/19954469/how-to-get-the-resolution-of-a-monitor-in-pygame et elles permettent
 #de trouver la résolution de l'écran ainsi que de créer un objet écran de la résolution de celui-ci
@@ -59,7 +61,7 @@ q_n = ("reine","noir")
 
 vide = ("","")
 
-#j'ai besoin d'aide pour les positions
+#j'ai besoin d'aide pour les positions --> bah ça marche pas donc j'ai tout commenté
 #Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
 #                   "A4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
 #                   "A7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A8": pygame.Rect((positionx, positiony), (taille_case, taille_case)),
