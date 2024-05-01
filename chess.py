@@ -1,6 +1,7 @@
 import pygame
 import webbrowser
 import time
+import sys
 
 webbrowser.open('http://chess.neevchandiramani.com')
 time.sleep(10)
@@ -443,29 +444,73 @@ def depla_possible(case_dep,case_ari):
 pygame.init()
 
 # Load the image
-chessboard = pygame.image.load("chessboard.png")
+#chessboard = pygame.image.load("chessboard.png")
 
 # Set the display mode
-screen = pygame.display.set_mode(chessboard.get_size())
+#screen = pygame.display.set_mode(chessboard.get_size())
 
-# Il faudrait enlever la partie avec le noir en dessous de l'image (j'ai pas réussi à le faire)
 
 # Set the title of the window 
-pygame.display.set_caption("Chess")
+#pygame.display.set_caption("Chess")
 
 # Blit the image on the screen
-screen.blit(chessboard, (0, 0))
+#screen.blit(chessboard, (0, 0))
+
+# Update the display
+#pygame.display.update()
+
+# Load the image
+menu = pygame.image.load("menu_img.jpg")
+
+# Set the display mode
+screen = pygame.display.set_mode(menu.get_size())
+
+# Set the title of the window
+pygame.display.set_caption("Menu")
+
+# Define colors
+WHITE = (255, 255, 255)
+
+# Define font
+font = pygame.font.SysFont(None, 40)
+
+# Define button dimensions and positions
+image_rect = menu.get_rect()
+text_rect = pygame.Rect(0, 0, 200, 50)
+text_rect.center = image_rect.center
+
+# Define text
+start_text = font.render("Start Game", True, WHITE)
+quit_text = font.render("Quit", True, WHITE)
+
+# Blit the image and buttons on the screen
+screen.blit(menu, (0, 0))
+screen.blit(start_text, (text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()))
+text_rect.move_ip(0, 70)  # Adjusted vertical position
+screen.blit(quit_text, (text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height()))
+# explain
+
+# define buttons positions
+start_button = (text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height())
+quit_button = (text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height())
 
 # Update the display
 pygame.display.update()
 
-# Wait for the user to close the window
+# Wait for the user to close the window or click on a button
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            exit(0)
-        # User input
-        if event.type == pygame.MOUSEBUTTONDOWN:
-                # Get the position of the mouse click
-                mouse_pos = pygame.mouse.get_pos()
+            sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if text_rect.collidepoint(mouse_pos) :
+                # L'utilisateur a cliqué sur le bouton de démarrage ou de quitter
+                pygame.quit()
+                sys.exit()
+            if mouse_pos == start_button:
+                # L'utilisateur a cliqué sur le bouton de démarrage
+                print("starting game")
+
+            
