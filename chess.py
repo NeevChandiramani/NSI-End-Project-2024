@@ -14,52 +14,7 @@ time.sleep(10)
 # ligne 8 à 10 font tout buger, t'as fait quoi ayoub?!
 
 
-p_b_1 = ("pion","blanc")
-p_b_2 = ("pion","blanc")
-p_b_3 = ("pion","blanc")
-p_b_4 = ("pion","blanc")
-p_b_5 = ("pion","blanc")
-p_b_6 = ("pion","blanc")
-p_b_7 = ("pion","blanc")
-p_b_8 = ("pion","blanc")
 
-t_b_1 = ("tour","blanc")
-t_b_2 = ("tour","blanc")
-
-c_b_1 = ("cavalier","blanc")
-c_b_2 = ("cavalier","blanc")
-
-f_b_1 = ("fou","blanc")
-f_b_2 = ("fou","blanc")
-
-k_b = ("roi","blanc")
-q_b = ("reine","blanc")
-
-
-
-p_n_1 = ("pion","noir")
-p_n_2 = ("pion","noir")
-p_n_3 = ("pion","noir")
-p_n_4 = ("pion","noir")
-p_n_5 = ("pion","noir")
-p_n_6 = ("pion","noir")
-p_n_7 = ("pion","noir")
-p_n_8 = ("pion","noir")
-
-t_n_1 = ("tour","noir")
-t_n_2 = ("tour","noir")
-
-c_n_1 = ("cavalier","noir")
-c_n_2 = ("cavalier","noir")
-
-f_n_1 = ("fou","noir")
-f_n_2 = ("fou","noir")
-
-k_n = ("roi","noir")
-q_n = ("reine","noir")
-
-
-vide = ("","")
 
 #j'ai besoin d'aide pour les positions --> bah ça marche pas donc j'ai tout commenté
 #Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A2": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A3": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
@@ -94,15 +49,16 @@ vide = ("","")
  #                  "H4": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H5": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H6": pygame.Rect((positionx, positiony), (taille_case, taille_case)), 
  #                  "H7": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "H8": pygame.Rect((positionx, positiony), (taille_case, taille_case)), }
 
+vide = ["",""]
 
-Echequier = [[t_b_1,c_b_1,f_b_1,q_b,k_b,f_b_2,c_b_2,t_b_2],
-             [p_b_1,p_b_2,p_b_3,p_b_4,p_b_5,p_b_6,p_b_7,p_b_8],
+Echequier = [[["tour","blanc"],["cavalier","blanc"],["fou","blanc"],["reine","blanc"],["roi","blanc"],["fou","blanc"],["cavalier","blanc"],["tour","blanc"]],
+             [["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"]],
              [vide,vide,vide,vide,vide,vide,vide,vide],
              [vide,vide,vide,vide,vide,vide,vide,vide],
              [vide,vide,vide,vide,vide,vide,vide,vide],
              [vide,vide,vide,vide,vide,vide,vide,vide],
-             [p_n_1,p_n_2,p_n_3,p_n_4,p_n_5,p_n_6,p_n_7,p_n_8],
-             [t_n_1,c_n_1,f_n_1,q_n,k_n,f_n_2,c_n_2,t_n_2]]
+             [["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"]],
+             [["tour","noir"],["cavalier","noir"],["fou","noir"],["reine","noir"],["roi","noir"],["fou","noir"],["cavalier","noir"],["tour","noir"]]]
 
 #On doit trouver un moyen de relier mon dictionnaire à la liste des pions
 Echiquierfinal = {}
