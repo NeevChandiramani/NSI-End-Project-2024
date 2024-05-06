@@ -371,6 +371,22 @@ def echec_et_mat(couleur):
         for j in range(8):
             if case(chr(i+65)+str(j)) == ("roi",couleur):
                 c = chr(i+65)+str(j)
+    a = 0
+    b = ""
+    for i in range(8):
+        for j in range(8):
+            for k in range(len(deplas(chr(i+65)+str(j)))):
+                if c == deplas(chr(i+65)+str(j))[k]:
+                    a = a + 1
+                    b = chr(i+65)+str(j)
+                    if a >= 2:
+                        return True
+    if a == 1:
+        for i in range(8):
+            for j in range(8):
+                for k in range(len(deplas(chr(i+65)+str(j)))):
+                    if case(chr(i+65)+str(j))[1] != case(b)[1] and deplas(chr(i+65)+str(j))[k] == b:
+                        return False
   #faudra voir si 1: il y a au moins 2 pièces adverses qui le menace 2: en se déplaçant ça change rien donc il faudra utiliser depla_possible
 
 def depla_possible(case_dep,case_ari):
