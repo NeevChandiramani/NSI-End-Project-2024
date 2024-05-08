@@ -96,6 +96,8 @@ def deplas(s):
                     r.append(chr(colonne-1+65)+str(ligne+1+1))
                 if colonne+1 < 8 and ligne+1 < 8 and case_c_l(colonne+1,ligne+1)[1] == "noir":
                     r.append(chr(colonne+1+65)+str(ligne+1+1))
+                if ligne == 1 and case_c_l(colonne,ligne+2) == vide:
+                    r.append(chr(colonne+65)+str(ligne+2+1))
             else:
                 if case_c_l(colonne,ligne-1) == vide:
                     r.append(chr(colonne+65)+str(ligne))
@@ -103,6 +105,8 @@ def deplas(s):
                     r.append(chr(colonne-1+65)+str(ligne+1-1))
                 if colonne+1 < 8 and ligne-1 >=0 and case_c_l(colonne+1,ligne-1)[1] == "blanc":
                     r.append(chr(colonne+1+65)+str(ligne+1-1))
+                if ligne == 7 and case_c_l(colonne,ligne-2) == vide:
+                    r.append(chr(colonne+65)+str(ligne-2+1))
         elif typ == "tour":
             continuer = True
             i = 1
@@ -371,6 +375,9 @@ def echec_et_mat(couleur):
         for j in range(8):
             if case(chr(i+65)+str(j)) == ("roi",couleur):
                 c = chr(i+65)+str(j)
+    for i in range(len(deplas(c))):
+        if depla_possible(c,deplas(c)[i]):
+            return True
     a = 0
     b = ""
     for i in range(8):
@@ -385,8 +392,10 @@ def echec_et_mat(couleur):
         for i in range(8):
             for j in range(8):
                 for k in range(len(deplas(chr(i+65)+str(j)))):
-                    if case(chr(i+65)+str(j))[1] != case(b)[1] and deplas(chr(i+65)+str(j))[k] == b:
+                    if case(chr(i+65)+str(j))[1] != case(b)[1] and deplas(chr(i+65)+str(j))[k] == b and depla_possible(deplas(chr(i+65)+str(j))[k],b):
                         return False
+        return True
+                    
   #faudra voir si 1: il y a au moins 2 pièces adverses qui le menace 2: en se déplaçant ça change rien donc il faudra utiliser depla_possible
 
 def depla_possible(case_dep,case_ari):
