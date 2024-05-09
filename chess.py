@@ -486,11 +486,11 @@ while True:
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
-            if text_rect.collidepoint(mouse_pos) :
+            if text_rect.collidepoint(mouse_pos):
                 # L'utilisateur a cliqué sur le bouton de démarrage ou de quitter
                 pygame.quit()
                 sys.exit()
-            if mouse_pos == start_button:
+            elif start_button.collidepoint(mouse_pos):
                 # L'utilisateur a cliqué sur le bouton de démarrage
                 print("starting game")
 
