@@ -4,7 +4,7 @@ import time
 import sys
 
 webbrowser.open('http://chess.neevchandiramani.com')
-time.sleep(10)
+time.sleep(5)
 
 #Les deux lignes suivantes sont issues d'un forum : https://stackoverflow.com/questions/19954469/how-to-get-the-resolution-of-a-monitor-in-pygame et elles permettent
 #de trouver la résolution de l'écran ainsi que de créer un objet écran de la résolution de celui-ci
@@ -472,26 +472,28 @@ screen.blit(quit_text, (text_rect.centerx - quit_text.get_width() / 2, text_rect
 # explain
 
 # define buttons positions
-start_button = (text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height())
+start_button = pygame.Rect(text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height(), start_text.get_width(), start_text.get_height())
 quit_button = (text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height())
 
 # Update the display
 pygame.display.update()
 
-# Wait for the user to close the window or click on a button
+ # Wait for the user to close the window or click on a button
+ # Main loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_pos = pygame.mouse.get_pos()
-            if text_rect.collidepoint(mouse_pos):
-                # L'utilisateur a cliqué sur le bouton de démarrage ou de quitter
+            if text_rect.collidepoint(event.pos):
+                # L'utilisateur a cliqué sur le bouton de quitter
                 pygame.quit()
                 sys.exit()
-            elif start_button.collidepoint(mouse_pos):
+            elif start_button.collidepoint(event.pos):
                 # L'utilisateur a cliqué sur le bouton de démarrage
                 print("starting game")
+
+
 
             
