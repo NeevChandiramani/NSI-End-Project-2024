@@ -493,6 +493,7 @@ while True:
             elif start_button.collidepoint(event.pos):
                 # L'utilisateur a cliqué sur le bouton de démarrage
                 print("starting game")
+                ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher 
 
 
 
