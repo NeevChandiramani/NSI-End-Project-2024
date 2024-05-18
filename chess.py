@@ -452,14 +452,22 @@ screen.blit(quit_text, (text_rect.centerx - quit_text.get_width() / 2, text_rect
 # explain
 
 # define buttons positions
-start_button = pygame.Rect((text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()),start_text.get_size)
-quit_button = pygame.Rect(text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height())
+start_button = pygame.Rect((text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()),((start_text.get_width()),(start_text.get_height())))
+quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height()),(quit_text.get_width(),quit_text.get_height()))
+#explain --> Pour un argument rect, faut 4 variables, les 2 premières sont les coordonnées du coin supérieur gauche et les 2 suivantes sont la largeur et la hauteur du rectangle séparés par les virgules
+#Rect(left, top, width, height)
+
 
 # Update the display
 pygame.display.update()
 
+# Function for the main loop
+#def main_loop():
+#    print("starting game")
+
+
  # Wait for the user to close the window or click on a button
- # Main loop
+ # loop for the menu
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -476,7 +484,5 @@ while True:
                 #main_loop()
                 ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher
                 
-                
-def main_loop():
-    print("starting game")
+            
     
