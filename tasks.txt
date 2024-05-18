@@ -1,7 +1,4 @@
 // Les tâches â se départager -->
--> en groupe : décider de la structure du programme
-- créer un dictionnaire des déplacements
-- créer une interface graphique
 
 // Tâche : création de l'arborescence du projet -->
 
@@ -9,7 +6,7 @@
 
 Répartition des tâches :
 
-Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA) --> (avec une interface graphique)
+Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA)
 
 
 Erwan : - faire une béta sans graphique
