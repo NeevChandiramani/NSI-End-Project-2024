@@ -468,19 +468,18 @@ pygame.display.update()
 
  # Wait for the user to close the window or click on a button
  # loop for the menu
+# Wait for the user to close the window or click on a button
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            if start_button.collidepoint(event.pos):
+                print("starting game")
             if quit_button.collidepoint(event.pos):
-                # L'utilisateur a cliqué sur le bouton de quitter
                 pygame.quit()
                 sys.exit()
-            if start_button.collidepoint(event.pos):
-                # L'utilisateur a cliqué sur le bouton de démarrage
-                print("starting game")
                 #main_loop()
                 ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher
                 
