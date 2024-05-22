@@ -14,7 +14,3 @@ Erwan : - refonte du programme
 
 Ayoub : - Déplacements des pions sur l'échéquier et création des différents retangles qui permetteront à pygame de considérer les pions comme des rectangles
         - Création de l'échéquier et des pions
-
-
-tâches globales :
-- 
