@@ -69,6 +69,11 @@ Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4"
              "G1":["cavalier","blanc"], "G2":["pion","blanc"],  "G3":vide,  "G4":vide,  "G5":vide,  "G6":vide,  "G7":["pion","noir"],   "G8":["cavalier","noir"],
              "H1":["tour","blanc"],     "H2":["pion","blanc"],  "H3":vide,  "H4":vide,  "H5":vide,  "H6":vide,  "H7":["pion","noir"],   "H8":["tour","noir"]}
 
+pions = {"pion1n" : ♟, "pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟, }
+         "pion1b"
+
+Echiquier_pions = {"♟" : Echequier["G1"], "♟" : Echequier["G2"], "♟" : Echequier["G3"], "♟" : Echequier["G4"], "♟" : Echequier["G5"], "♟" : Echequier["G6"], "♟" : Echequier["G7"], "♟" : Echequier["G8"],
+                   "♙" : Echequier["B1"], "♙" : Echequier["B2"], "♙" : Echequier["B3"], "♙" : Echequier["B4"], "♙" : Echequier["B5"], "♙" : Echequier["B6"], "♙" : Echequier["B7"], "♙" : Echequier["B8"], 
 
 
 def colonne_num(case):
@@ -422,9 +427,13 @@ def depla_possible(case_dep,case_ari):
 
 def affichage():
     global Cases_echiquier
-    A_2 = font.render("unicode de pion", True, WHITE)
-    screen.blit(A_2, Cases_echiquier["A2"])
-    pygame.display.update()
+    global Color_Echequier
+    screen.fill(GREY)
+    for i in Cases_echiquier.keys():
+        casee = font.render(i, True, GREY)
+        pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
+        screen.blit(echiquier_surface, Cases_echiquier[i])
+        screen.blit(casee, Cases_echiquier[i])
 
 
 ## Pygame
@@ -478,12 +487,9 @@ def main_loop():
     global Color_Echequier
     print("starting game")
     affichage()
-    screen.fill(GREY)
-    for i in Cases_echiquier.keys():
-        casee = font.render(i, True, GREY)
-        pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
-        screen.blit(echiquier_surface, Cases_echiquier[i])
-        screen.blit(casee, Cases_echiquier[i])
+    if event.type == pygame.QUIT:
+        pygame.quit()
+        sys.exit()
     pygame.display.update()
 
 
