@@ -474,6 +474,3 @@ while True:
                 sys.exit()
                 #main_loop()
                 ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher -- Essaie de le faire rouler
-                
-            
-    
