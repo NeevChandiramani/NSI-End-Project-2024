@@ -407,6 +407,7 @@ def depla_possible(case_dep,case_ari):
 
 
 
+
 ## Pygame
 
 pygame.init()
@@ -418,7 +419,7 @@ menu = pygame.image.load("menu_img.jpg")
 screen = pygame.display.set_mode(menu.get_size())
 
 # Set the title of the window
-pygame.display.set_caption("Menu")
+pygame.display.set_caption("Menu de démarrage")
 
 # Define colors
 WHITE = (255, 255, 255)
@@ -453,9 +454,16 @@ quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_r
 # Update the display
 pygame.display.update()
 
+def affichage():
+    A_2= font.render("unicode de pion", True, WHITE)
+
+    screen.blit(A_2, cas)
+
+
 # Function for the main loop
-#def main_loop():
-#    print("starting game")
+def main_loop():
+    print("starting game")
+    # tout pygame
 
 
  # Wait for the user to close the window or click on a button
@@ -468,9 +476,8 @@ while True:
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if start_button.collidepoint(event.pos):
-                print("starting game")
+                main_loop()
             if quit_button.collidepoint(event.pos):
                 pygame.quit()
                 sys.exit()
-                #main_loop()
                 ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher -- Essaie de le faire rouler
