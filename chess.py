@@ -44,7 +44,7 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
                    "H4": pygame.Rect((positionx + 135 * 3, positiony - 135 * 7), (taille_case, taille_case)), "H5": pygame.Rect((positionx + 135 * 4, positiony - 135 * 7), (taille_case, taille_case)), "H6": pygame.Rect((positionx + 135 * 5, positiony - 135 * 7), (taille_case, taille_case)), 
                    "H7": pygame.Rect((positionx + 135 * 6, positiony - 135 * 7), (taille_case, taille_case)), "H8": pygame.Rect((positionx + 135 * 7, positiony - 135 * 7), (taille_case, taille_case)),}
 
-echiquier_surface = pygame.Surface(135, 135)
+echiquier_surface = pygame.Surface([135, 135])
 vide = ["",""]
 
 Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4":vide,  "A5":vide,  "A6":vide,  "A7":["pion","noir"],   "A8":["tour","noir"],
@@ -422,7 +422,7 @@ pygame.init()
 menu = pygame.image.load("menu_img.jpg")
 
 # Set the display mode
-screen = pygame.display.set_mode(menu.get_size())
+screen = pygame.display.set_mode([1920, 1080])
 
 # Set the title of the window
 pygame.display.set_caption("Menu de démarrage")
@@ -430,6 +430,9 @@ pygame.display.set_caption("Menu de démarrage")
 # Define colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+GREY = (115, 115, 115)
+
+White_Black = [WHITE,BLACK]
 
 # Define font
 font = pygame.font.SysFont(None, 40)
@@ -465,10 +468,13 @@ pygame.display.update()
 def main_loop():
     print("starting game")
     affichage()
-    for i in Cases_echiquier.keys :
-        screen.blit()
-    #  tout pygame
-
+    screen.fill(GREY)
+    n = 0
+    for i in Cases_echiquier.keys():
+        pygame.Surface.fill(echiquier_surface, White_Black[n%2])
+        screen.blit(echiquier_surface, Cases_echiquier[i])
+        n = n + 1
+    pygame.display.update()
 
 
  # Wait for the user to close the window or click on a button
