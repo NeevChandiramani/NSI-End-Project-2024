@@ -17,8 +17,8 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
                    "A7": pygame.Rect((positionx + 135 * 6, positiony), (taille_case, taille_case)), "A8": pygame.Rect((positionx + 135 * 7, positiony), (taille_case, taille_case)),
 
                    "B1": pygame.Rect((positionx, positiony - 135 * 1 ), (taille_case, taille_case)), "B2": pygame.Rect((positionx + 135 * 1, positiony - 135 * 1), (taille_case, taille_case)), "B3": pygame.Rect((positionx + 135 * 2, positiony - 135 * 1), (taille_case, taille_case)), 
-                   "B4": pygame.Rect((positionx + 135 * 3, positiony - 135 * 1), (taille_case, taille_case)), "B5": pygame.Rect((positionx + 135 * 4, positiony + 135 - 1), (taille_case, taille_case)), "B6": pygame.Rect((positionx + 135 * 5, positiony - 135 * 1), (taille_case, taille_case)), 
-                   "B7": pygame.Rect((positionx + 135 * 6, positiony - 135 * 1), (taille_case, taille_case)), "B8": pygame.Rect((positionx + 135 * 7, positiony + 135 - 1), (taille_case, taille_case)), 
+                   "B4": pygame.Rect((positionx + 135 * 3, positiony - 135 * 1), (taille_case, taille_case)), "B5": pygame.Rect((positionx + 135 * 4, positiony - 135 * 1), (taille_case, taille_case)), "B6": pygame.Rect((positionx + 135 * 5, positiony - 135 * 1), (taille_case, taille_case)), 
+                   "B7": pygame.Rect((positionx + 135 * 6, positiony - 135 * 1), (taille_case, taille_case)), "B8": pygame.Rect((positionx + 135 * 7, positiony - 135 * 1), (taille_case, taille_case)), 
 
                    "C1": pygame.Rect((positionx, positiony - 135 * 2), (taille_case, taille_case)), "C2": pygame.Rect((positionx + 135 * 1 , positiony - 135 * 2 ), (taille_case, taille_case)), "C3": pygame.Rect((positionx + 135 * 2, positiony - 135 * 2), (taille_case, taille_case)), 
                    "C4": pygame.Rect((positionx + 135 * 3, positiony - 135 * 2), (taille_case, taille_case)), "C5": pygame.Rect((positionx + 135 * 4, positiony - 135 * 2), (taille_case, taille_case)), "C6": pygame.Rect((positionx + 135 * 5, positiony - 135 * 2), (taille_case, taille_case)), 
@@ -480,8 +480,10 @@ def main_loop():
     affichage()
     screen.fill(GREY)
     for i in Cases_echiquier.keys():
+        casee = font.render(i, True, GREY)
         pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
         screen.blit(echiquier_surface, Cases_echiquier[i])
+        screen.blit(casee, Cases_echiquier[i])
     pygame.display.update()
 
 
