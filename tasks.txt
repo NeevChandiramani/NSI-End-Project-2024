@@ -9,7 +9,7 @@ Répartition des tâches :
 Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA)
 
 
-Erwan : - refonte du programme
+Erwan : - refonte du programme --> c'est fait
         - faire une béta sans graphique
 
 Ayoub : - Déplacements des pions sur l'échéquier et création des différents retangles qui permetteront à pygame de considérer les pions comme des rectangles

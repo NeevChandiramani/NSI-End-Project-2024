@@ -46,40 +46,37 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
 
 vide = ["",""]
 
-Echequier = [[["tour","blanc"],["cavalier","blanc"],["fou","blanc"],["reine","blanc"],["roi","blanc"],["fou","blanc"],["cavalier","blanc"],["tour","blanc"]],
-             [["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"],["pion","blanc"]],
-             [vide,vide,vide,vide,vide,vide,vide,vide],
-             [vide,vide,vide,vide,vide,vide,vide,vide],
-             [vide,vide,vide,vide,vide,vide,vide,vide],
-             [vide,vide,vide,vide,vide,vide,vide,vide],
-             [["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"],["pion","noir"]],
-             [["tour","noir"],["cavalier","noir"],["fou","noir"],["reine","noir"],["roi","noir"],["fou","noir"],["cavalier","noir"],["tour","noir"]]]
+Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4":vide,  "A5":vide,  "A6":vide,  "A7":["pion","noir"],   "A8":["tour","noir"],
+             "B1":["cavalier","blanc"], "B2":["pion","blanc"],  "B3":vide,  "B4":vide,  "B5":vide,  "B6":vide,  "B7":["pion","noir"],   "B8":["cavalier","noir"],
+             "C1":["fou","blanc"],      "C2":["pion","blanc"],  "C3":vide,  "C4":vide,  "C5":vide,  "C6":vide,  "C7":["pion","noir"],   "C8":["fou","noir"],
+             "D1":["reine","blanc"],    "D2":["pion","blanc"],  "D3":vide,  "D4":vide,  "D5":vide,  "D6":vide,  "D7":["pion","noir"],   "D8":["reine","noir"],
+             "E1":["roi","blanc"],      "E2":["pion","blanc"],  "E3":vide,  "E4":vide,  "E5":vide,  "E6":vide,  "E7":["pion","noir"],   "E8":["roi","noir"],
+             "F1":["fou","blanc"],      "F2":["pion","blanc"],  "F3":vide,  "F4":vide,  "F5":vide,  "F6":vide,  "F7":["pion","noir"],   "F8":["fou","noir"],
+             "G1":["cavalier","blanc"], "G2":["pion","blanc"],  "G3":vide,  "G4":vide,  "G5":vide,  "G6":vide,  "G7":["pion","noir"],   "G8":["cavalier","noir"],
+             "H1":["tour","blanc"],     "H2":["pion","blanc"],  "H3":vide,  "H4":vide,  "H5":vide,  "H6":vide,  "H7":["pion","noir"],   "H8":["tour","noir"]}
 
-#On doit trouver un moyen de relier mon dictionnaire à la liste des pions
-Echiquierfinal = {}
 
-def case(s):
-    global Echequier
-#????
-    return Echequier[int(s[1])-1][ord(s[0])-65]
+
+def colonne_num(case):
+    return ord(case[0])-65
+def colonne_chif(num):
+    return chr(65+num)
 
 def case_c_l(colonne,ligne):
     global Echequier
-    return Echequier[ligne][colonne]
+    return Echequier[colonne_chif(colonne)+str(ligne+1)]
+
 
 def mouvement(de_la,vers_la):
     global Echequier
-    #Explique un peu ça
-    co1 = (int(de_la[1]),ord(de_la[0])-65)
-    co2 = (int(vers_la[1]),ord(vers_la[0])-65)
-    Echequier[co2[0]][co2[1]] = Echequier[co1[0]][co1[1]]
-    Echequier[co1[0]][co1[1]] = vide
+    Echequier[vers_la] = Echequier[de_la]
+    Echequier[de_la] = vide
 
 def deplas(s):
     r = []
-    (typ,couleur) = case(s)
     colonne = ord(s[0])-65
     ligne = int(s[1])-1
+    (typ,couleur) = case_c_l(colonne,ligne)
     if typ == "":
         return r
     else :
@@ -351,52 +348,46 @@ def deplas(s):
 
 def echec(couleur):
     global Echequier
-    for i in range(8):
-        for j in range(8):
-            if case(chr(i+65)+str(j)) == ("roi",couleur):
-                c = chr(i+65)+str(j)
-    for i in range(8):
-        for j in range(8):
-            a = chr(i+65)+str(j)
-            if case(a)[1] != couleur and case(a)[1] != "":
-                for i in range(len(deplas(a))):
-                    if deplas(a)[i] == c :
-                        return True
+    for i in Echequier.keys():
+        if Echequier[i] == ("roi",couleur):
+            case_roi = i
+    for i in Echequier.keys():
+        if Echequier[i][1] != couleur and Echequier[i][1] != "":
+            for i in range(len(deplas(i))):
+                if deplas(i)[i] == case_roi :
+                    return True
     return False
 
 def echec_et_mat(couleur):
     global Echequier
-    for i in range(8):
-        for j in range(8):
-            if case(chr(i+65)+str(j)) == ("roi",couleur):
-                c = chr(i+65)+str(j)
-    for i in range(len(deplas(c))):
-        if depla_possible(c,deplas(c)[i]):
-            return True
+    for i in Echequier.keys():
+        if Echequier[i] == ("roi",couleur):
+            case_roi = i
+    for i in range(len(deplas(case_roi))):
+        if depla_possible(case_roi,deplas(case_roi)[i]):
+            return False
     a = 0
     b = ""
-    for i in range(8):
-        for j in range(8):
-            for k in range(len(deplas(chr(i+65)+str(j)))):
-                if c == deplas(chr(i+65)+str(j))[k]:
-                    a = a + 1
-                    b = chr(i+65)+str(j)
-                    if a >= 2:
-                        return True
+    for i in Echequier.keys():
+        for k in range(len(deplas(i))):
+            if case_roi == deplas(i)[k]:
+                a = a + 1
+                b = i
+                if a >= 2:
+                    return True
     if a == 1:
-        for i in range(8):
-            for j in range(8):
-                for k in range(len(deplas(chr(i+65)+str(j)))):
-                    if case(chr(i+65)+str(j))[1] != case(b)[1] and deplas(chr(i+65)+str(j))[k] == b and depla_possible(deplas(chr(i+65)+str(j))[k],b):
-                        return False
+        for i in Echequier.keys():
+            for k in range(len(deplas(i))):
+                if Echequier[i][1] != Echequier[b][1] and deplas(i)[k] == b and depla_possible(deplas(i)[k],b):
+                    return False
         return True
                     
   #faudra voir si 1: il y a au moins 2 pièces adverses qui le menace 2: en se déplaçant ça change rien donc il faudra utiliser depla_possible
 
 def depla_possible(case_dep,case_ari):
     global Echequier
-    pion1 = case(case_dep)
-    pion2 = case(case_ari)
+    pion1 = Echequier[case_dep]
+    pion2 = Echequier[case_ari]
     oui = False
     for i in range(len(deplas(case_dep))):
         if case_ari == deplas(case_dep)[i]:
@@ -404,15 +395,16 @@ def depla_possible(case_dep,case_ari):
     if oui:
         mouvement(case_dep,case_ari)
         if echec(pion1[1]):
-            Echequier[int(case_dep[1])-1][ord(case_dep[0])-65] = pion1
-            Echequier[int(case_ari[1])-1][ord(case_ari[0])-65] = pion2
+            Echequier[case_dep] = pion1
+            Echequier[case_ari] = pion2
             return False
         else:
-            Echequier[int(case_dep[1])-1][ord(case_dep[0])-65] = pion1
-            Echequier[int(case_ari[1])-1][ord(case_ari[0])-65] = pion2
+            Echequier[case_dep] = pion1
+            Echequier[case_ari] = pion2
             return True
     else:
         return False
+
 
 
 ## Pygame
@@ -481,7 +473,7 @@ while True:
                 pygame.quit()
                 sys.exit()
                 #main_loop()
-                ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher
+                ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher -- Essaie de le faire rouler
                 
             
     
