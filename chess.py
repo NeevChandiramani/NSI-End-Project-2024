@@ -47,6 +47,19 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
 echiquier_surface = pygame.Surface([135, 135])
 vide = ["",""]
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GREY = (115, 115, 115)
+
+Color_Echequier = {"A1": WHITE, "A2": BLACK, "A3": WHITE, "A4": BLACK, "A5":WHITE, "A6": BLACK, "A7": WHITE, "A8": BLACK, 
+                   "B1": BLACK, "B2": WHITE, "B3": BLACK, "B4": WHITE, "B5": BLACK, "B6": WHITE, "B7": BLACK, "B8": WHITE,
+                   "C1": WHITE, "C2": BLACK, "C3": WHITE, "C4": BLACK, "C5": WHITE, "C6": BLACK, "C7": WHITE, "C8": BLACK,
+                   "D1": BLACK, "D2": WHITE, "D3": BLACK, "D4": WHITE, "D5": BLACK, "D6": WHITE, "D7": BLACK, "D8": WHITE,
+                   "E1": WHITE, "E2": BLACK, "E3": WHITE, "E4": BLACK, "E5": WHITE, "E6": BLACK, "E7": WHITE, "E8": BLACK,
+                   "F1": BLACK, "F2": WHITE, "F3": BLACK, "F4": WHITE, "F5": BLACK, "F6": WHITE, "F7": BLACK, "F8": WHITE,
+                   "G1": WHITE, "G2": BLACK, "G3": WHITE, "G4": BLACK, "G5": WHITE, "G6": BLACK, "G7": WHITE, "G8": BLACK,
+                   "H1": BLACK, "H2": WHITE, "H3": BLACK, "H4": WHITE, "H5": BLACK, "H6": WHITE, "H7": BLACK, "H8": WHITE}
+
 Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4":vide,  "A5":vide,  "A6":vide,  "A7":["pion","noir"],   "A8":["tour","noir"],
              "B1":["cavalier","blanc"], "B2":["pion","blanc"],  "B3":vide,  "B4":vide,  "B5":vide,  "B6":vide,  "B7":["pion","noir"],   "B8":["cavalier","noir"],
              "C1":["fou","blanc"],      "C2":["pion","blanc"],  "C3":vide,  "C4":vide,  "C5":vide,  "C6":vide,  "C7":["pion","noir"],   "C8":["fou","noir"],
@@ -428,11 +441,7 @@ screen = pygame.display.set_mode([1920, 1080])
 pygame.display.set_caption("Menu de démarrage")
 
 # Define colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GREY = (115, 115, 115)
 
-White_Black = [WHITE,BLACK]
 
 # Define font
 font = pygame.font.SysFont(None, 40)
@@ -466,14 +475,13 @@ pygame.display.update()
 
 # Function for the main loop
 def main_loop():
+    global Color_Echequier
     print("starting game")
     affichage()
     screen.fill(GREY)
-    n = 0
     for i in Cases_echiquier.keys():
-        pygame.Surface.fill(echiquier_surface, White_Black[n%2])
+        pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
         screen.blit(echiquier_surface, Cases_echiquier[i])
-        n = n + 1
     pygame.display.update()
 
 
