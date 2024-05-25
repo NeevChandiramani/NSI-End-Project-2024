@@ -209,7 +209,7 @@ def deplas(s):
                         continuer = False
                     else:
                         if case_c_l(colonne+i,ligne-i)[1] != couleur and case_c_l(colonne+i,ligne-i)[1] != "":
-                            ontinuer = False
+                            continuer = False
                         r.append(chr(colonne+65+i)+str(ligne+1-i))
                         i = i + 1
             continuer = True
