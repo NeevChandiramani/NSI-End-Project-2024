@@ -44,6 +44,7 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
                    "H4": pygame.Rect((positionx + 135 * 3, positiony - 135 * 7), (taille_case, taille_case)), "H5": pygame.Rect((positionx + 135 * 4, positiony - 135 * 7), (taille_case, taille_case)), "H6": pygame.Rect((positionx + 135 * 5, positiony - 135 * 7), (taille_case, taille_case)), 
                    "H7": pygame.Rect((positionx + 135 * 6, positiony - 135 * 7), (taille_case, taille_case)), "H8": pygame.Rect((positionx + 135 * 7, positiony - 135 * 7), (taille_case, taille_case)),}
 
+echiquier_surface = pygame.Surface(135, 135)
 vide = ["",""]
 
 Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4":vide,  "A5":vide,  "A6":vide,  "A7":["pion","noir"],   "A8":["tour","noir"],
@@ -406,6 +407,11 @@ def depla_possible(case_dep,case_ari):
         return False
 
 
+def affichage():
+    global Cases_echiquier
+    A_2 = font.render("unicode de pion", True, WHITE)
+    screen.blit(A_2, Cases_echiquier["A2"])
+    pygame.display.update()
 
 
 ## Pygame
@@ -454,16 +460,15 @@ quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_r
 # Update the display
 pygame.display.update()
 
-def affichage():
-    A_2= font.render("unicode de pion", True, WHITE)
-
-    screen.blit(A_2, cas)
-
 
 # Function for the main loop
 def main_loop():
     print("starting game")
-    # tout pygame
+    affichage()
+    for i in Cases_echiquier.keys :
+        screen.blit()
+    #  tout pygame
+
 
 
  # Wait for the user to close the window or click on a button
