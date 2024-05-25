@@ -69,8 +69,9 @@ Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4"
              "G1":["cavalier","blanc"], "G2":["pion","blanc"],  "G3":vide,  "G4":vide,  "G5":vide,  "G6":vide,  "G7":["pion","noir"],   "G8":["cavalier","noir"],
              "H1":["tour","blanc"],     "H2":["pion","blanc"],  "H3":vide,  "H4":vide,  "H5":vide,  "H6":vide,  "H7":["pion","noir"],   "H8":["tour","noir"]}
 
-pions = {"pion1n" : ♟, "pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟,"pion1n" : ♟, }
-         "pion1b"
+pions = {"pion1n" : ♟, "pion2n" : ♟, "pion3n" : ♟, "pion4n" : ♟, "pion5n" : ♟, "pion6n" : ♟, "pion7n" : ♟, "pion8n" : ♟, 
+         "pion1b" : ♙, "pion2b" : ♙, "pion3b" : ♙, "pion4b" : ♙, "pion5b" : ♙, "pion6b" : ♙, "pion7b" : ♙, "pion8b" : ♙, 
+         "tour1n": , "cavalier1n": , "fou1n": , "reinen": , "roin": , "fou1n"
 
 Echiquier_pions = {"♟" : Echequier["G1"], "♟" : Echequier["G2"], "♟" : Echequier["G3"], "♟" : Echequier["G4"], "♟" : Echequier["G5"], "♟" : Echequier["G6"], "♟" : Echequier["G7"], "♟" : Echequier["G8"],
                    "♙" : Echequier["B1"], "♙" : Echequier["B2"], "♙" : Echequier["B3"], "♙" : Echequier["B4"], "♙" : Echequier["B5"], "♙" : Echequier["B6"], "♙" : Echequier["B7"], "♙" : Echequier["B8"], 
