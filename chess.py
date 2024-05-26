@@ -90,7 +90,7 @@ def colonne_chif(num):
 
 def case_c_l(colonne,ligne):
     global Echequier
-    return Echequier[colonne_chif(colonne)+str(ligne+1)]
+    return Echequier[colonne_chif(colonne)+str(ligne)]
 
 
 def mouvement(de_la,vers_la):
