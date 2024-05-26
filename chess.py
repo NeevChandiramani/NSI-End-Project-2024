@@ -3,8 +3,8 @@ import webbrowser
 import time
 import sys
 
-#webbrowser.open('http://chess.neevchandiramani.com')
-#time.sleep(3)
+webbrowser.open('http://chess.neevchandiramani.com')
+time.sleep(3)
 
 taille_écran = (1920, 1080)
 taille_case = 1080 / 8
