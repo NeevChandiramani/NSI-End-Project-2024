@@ -432,10 +432,10 @@ def depla_possible(case_dep,case_ari):
     
 def promotion(case_pion):
     global Echequier
-    petit_reine = pygame.Surface([135, 135])
-    petit_cavalier = pygame.Surface([135, 135])
-    petit_tour = pygame.Surface([135, 135])
-    petit_fou = pygame.Surface([135, 135])
+    petit_reine = pygame.Rect((30, 120), (135, 135))
+    petit_cavalier = pygame.Rect((30, 390), (135, 135))
+    petit_tour = pygame.Rect((30, 525), (135, 135))
+    petit_fou = pygame.Rect((30, 255), (135, 135))
     promotion_text = font.render("Choisissez votre promotion", True , WHITE)
     screen.blit(promotion_text, (10, 100))
     reine = pygame.image.load("reine_noir.png")
@@ -447,16 +447,22 @@ def promotion(case_pion):
     screen.blit(cavalier, petit_cavalier)
     screen.blit(tour, petit_tour)
     pygame.display.update()
-    for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if petit_reine.collidepoint(event.pos):
-                Echequier[case_pion][0] = "reine"
-            if petit_cavalier.collidepoint(event.pos):
-                Echequier[case_pion][0] = "cavalier"
-            if petit_tour.collidepoint(event.pos):
-                Echequier[case_pion][0] = "tour"
-            if petit_fou.collidepoint(event.pos):
-                Echequier[case_pion][0] = "fou"
+    continuer = True
+    while continuer:
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if petit_reine.collidepoint(event.pos):
+                    Echequier[case_pion][0] = "reine"
+                    continuer = False
+                if petit_cavalier.collidepoint(event.pos):
+                    Echequier[case_pion][0] = "cavalier"
+                    continuer = False
+                if petit_tour.collidepoint(event.pos):
+                    Echequier[case_pion][0] = "tour"
+                    continuer = False
+                if petit_fou.collidepoint(event.pos):
+                    Echequier[case_pion][0] = "fou"
+                    continuer = False
 
     
     
