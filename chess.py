@@ -524,8 +524,15 @@ def tour(couleur):
                 for i in Cases_echiquier.keys():
                     if Cases_echiquier[i].collidepoint(event.pos):
                         case_selectionnee = i
-                if Echequier[case_selectionnee][1] != couleur:
-                    
+                if Echequier[case_selectionnee][1] == couleur:
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            for i in Cases_echiquier.keys():
+                                if Cases_echiquier[i].collidepoint(event.pos):
+                                    case_selectionnee2 = i
+                            if depla_possible(case_selectionnee,case_selectionnee2):
+                                mouvement(case_selectionnee,case_selectionnee2)
+                                continuer = False
 
 
 
@@ -544,6 +551,7 @@ def main_loop():
                 if Echequier[i][1] == "blanc":
                     print("C'est le tour des blancs")
                     tour("blanc")
+    
 
  # Wait for the user to close the window or click on a button
  # loop for the menu
