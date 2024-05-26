@@ -3,15 +3,15 @@ import webbrowser
 import time
 import sys
 
-#webbrowser.open('http://chess.neevchandiramani.com')
-#time.sleep(3)
+webbrowser.open('http://chess.neevchandiramani.com')
+time.sleep(3)
 
 taille_écran = (1920, 1080)
 taille_case = 1080 / 8
 positionx = 420
 positiony = 1080 - 135
 
-#Fini
+
 Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taille_case)), "A2": pygame.Rect((positionx + 135 * 1, positiony), (taille_case, taille_case)), "A3": pygame.Rect((positionx + 135 *2, positiony), (taille_case, taille_case)), 
                    "A4": pygame.Rect((positionx + 135 * 3, positiony), (taille_case, taille_case)), "A5": pygame.Rect((positionx + 135 * 4, positiony), (taille_case, taille_case)), "A6": pygame.Rect((positionx + 135 * 5, positiony), (taille_case, taille_case)), 
                    "A7": pygame.Rect((positionx + 135 * 6, positiony), (taille_case, taille_case)), "A8": pygame.Rect((positionx + 135 * 7, positiony), (taille_case, taille_case)),
@@ -70,14 +70,6 @@ Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4"
              "G1":["cavalier","blanc"], "G2":["pion","blanc"],  "G3":vide,  "G4":vide,  "G5":vide,  "G6":vide,  "G7":["pion","noir"],   "G8":["cavalier","noir"],
              "H1":["tour","blanc"],     "H2":["pion","blanc"],  "H3":vide,  "H4":vide,  "H5":vide,  "H6":vide,  "H7":["pion","noir"],   "H8":["tour","noir"]}
 
-pions = {"pion1n" : pygame.image.load("pion_noir.png"), "pion2n" : pygame.image.load("pion_noir.png"), "pion3n" : pygame.image.load("pion_noir.png"), "pion4n" : pygame.image.load("pion_noir.png"), 
-         "pion5n" : pygame.image.load("pion_noir.png"), "pion6n" : pygame.image.load("pion_noir.png"), "pion7n" : pygame.image.load("pion_noir.png"), "pion8n" : pygame.image.load("pion_noir.png"), 
-         "pion1b" : pygame.image.load("pion_blanc.png"), "pion2b" : pygame.image.load("pion_blanc.png"), "pion3b" : pygame.image.load("pion_blanc.png"), "pion4b" : pygame.image.load("pion_blanc.png"), 
-         "pion5b" : pygame.image.load("pion_blanc.png"), "pion6b" : pygame.image.load("pion_blanc.png"), "pion7b" : pygame.image.load("pion_blanc.png"), "pion8b" : pygame.image.load("pion_blanc.png"), 
-         "tour1n": pygame.image.load("tour_noir.png"), "cavalier1n": pygame.image.load("cavalier_noir.png"), "fou1n": pygame.image.load("fou_noir.png"), "reinen": pygame.image.load("reine_noir.png"), 
-         "roin": pygame.image.load("roi_noir.png"), "fou2n": pygame.image.load("fou_noir.png"), "cavalier2n": pygame.image.load("cavalier_noir.png"), "tour2n": pygame.image.load("tour_noir.png"),
-         "tour1b": pygame.image.load("tour_blanc.png"), "cavalier1b": pygame.image.load("cavalier_blanc.png"), "fou1b": pygame.image.load("fou_blanc.png"), "reineb": pygame.image.load("reine_blanc.png"), 
-         "roib": pygame.image.load("roi_blanc.png"), "fou2b": pygame.image.load("fou_blanc.png"), "cavalier2b": pygame.image.load("cavalier_blanc.png"), "tour2b": pygame.image.load("tour_blanc.png")} 
 
 def colonne_num(case):
     return ord(case[0])-65
@@ -406,8 +398,7 @@ def echec_et_mat(couleur):
                 if Echequier[i][1] != Echequier[b][1] and deplas(i)[k] == b and depla_possible(deplas(i)[k],b):
                     return False
         return True
-                    
-  #faudra voir si 1: il y a au moins 2 pièces adverses qui le menace 2: en se déplaçant ça change rien donc il faudra utiliser depla_possible
+
 
 def depla_possible(case_dep,case_ari):
     global Echequier
@@ -607,34 +598,34 @@ def main_loop():
         print("C'est le tour des blancs")
         tour("blanc")
         affichage()
-        if echec("noir"):
-            text_echec = font.render("Echec au noir", True, WHITE)
-            screen.blit(text_echec, (10, 100))
-            pygame.display.update()
         if echec_et_mat("noir"):
             continuer = False
             print("Les blancs ont gagné")
-            screen.blit(echec_et_mat_text, (10, 100))
+            screen.blit(echec_et_mat_text, (100, 100))
             pygame.display.update()
             time.sleep(5)
             pygame.quit()
             sys.exit()
+        elif echec("noir"):
+            text_echec = font.render("Echec au noir", True, WHITE)
+            screen.blit(text_echec, (100, 100))
+            pygame.display.update()
         else:
             print("C'est le tour des noirs")
             tour("noir")
             affichage()
-            if echec("blanc"):
-                text_echec = font.render("Echec au blanc", True, WHITE)
-                screen.blit(text_echec, (10, 100))
-                pygame.display.update()
             if echec_et_mat("blanc"):
                 continuer = False
                 print("Les noirs ont gagné")
-                screen.blit(echec_et_mat_text, (10, 10))
+                screen.blit(echec_et_mat_text, (100, 100))
                 pygame.display.update()
                 time.sleep(5)
                 pygame.quit()
                 sys.exit()
+            elif echec("blanc"):
+                text_echec = font.render("Echec au blanc", True, WHITE)
+                screen.blit(text_echec, (100, 100))
+                pygame.display.update()
     
 
  # Wait for the user to close the window or click on a button
