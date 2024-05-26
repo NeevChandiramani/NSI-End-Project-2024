@@ -42,6 +42,4 @@ La fonction depla_possible(case_dep, case_ari) valide si un mouvement est légal
 
 
 
-
-
 Certains bugs sont à signaler sur le rock, le en passant et le temps qui n'est pas compté. Les boutons du menu du démarrage du jeu ne fonctionnent pas très bien mais l'on peut toujours les utiliser si l'on sait où ils sont positionnés. 
