@@ -79,10 +79,6 @@ pions = {"pion1n" : pygame.image.load("pion_noir.png"), "pion2n" : pygame.image.
          "tour1b": pygame.image.load("tour_blanc.png"), "cavalier1b": pygame.image.load("cavalier_blanc.png"), "fou1b": pygame.image.load("fou_blanc.png"), "reineb": pygame.image.load("reine_blanc.png"), 
          "roib": pygame.image.load("roi_blanc.png"), "fou2b": pygame.image.load("fou_blanc.png"), "cavalier2b": pygame.image.load("cavalier_blanc.png"), "tour2b": pygame.image.load("tour_blanc.png")} 
 
-Echiquier_pions = {"♟" : Echequier["G1"], "♟" : Echequier["G2"], "♟" : Echequier["G3"], "♟" : Echequier["G4"], "♟" : Echequier["G5"], "♟" : Echequier["G6"], "♟" : Echequier["G7"], "♟" : Echequier["G8"],
-                   "♙" : Echequier["B1"], "♙" : Echequier["B2"], "♙" : Echequier["B3"], "♙" : Echequier["B4"], "♙" : Echequier["B5"], "♙" : Echequier["B6"], "♙" : Echequier["B7"], "♙" : Echequier["B8"], 
-}
-
 def colonne_num(case):
     return ord(case[0])-65
 def colonne_chif(num):
@@ -90,7 +86,9 @@ def colonne_chif(num):
 
 def case_c_l(colonne,ligne):
     global Echequier
-    return Echequier[colonne_chif(colonne)+str(ligne)]
+    if ligne+1 > 8 or ligne+1 < 1:
+        return ["",""]
+    return Echequier[colonne_chif(colonne)+str(ligne+1)]
 
 
 def mouvement(de_la,vers_la):
@@ -102,7 +100,8 @@ def deplas(s):
     r = []
     colonne = ord(s[0])-65
     ligne = int(s[1])-1
-    (typ,couleur) = case_c_l(colonne,ligne)
+    typ = case_c_l(colonne,ligne)[0]
+    couleur = case_c_l(colonne,ligne)[1]
     if typ == "":
         return r
     else :
