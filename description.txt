@@ -38,7 +38,7 @@ Détection d'Échec et Mat:
 La fonction echec_et_mat(couleur) détermine si le roi de la couleur spécifiée est en échec et mat. Elle vérifie si le roi peut se déplacer pour sortir de l'échec ou si une autre pièce peut intercepter ou capturer la pièce menaçante. Si aucune de ces actions n'est possible et que le roi est attaqué par au moins deux pièces adverses, l'échec et mat est déclaré.
 Déplacement des Pièces:
 
-La fonction depla_possible(case_dep, case_ari) valide si un mouvement est légal en vérifiant les règles de déplacement des pièces. Elle s'assure également que le roi ne soit
+La fonction depla_possible(case_dep, case_ari) valide si un mouvement est légal en vérifiant les règles de déplacement des pièces.
 
 
 
