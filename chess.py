@@ -430,35 +430,63 @@ def depla_possible(case_dep,case_ari):
     else:
         return False
 
+#def Pions(x):
+#    if x == ["pion","blanc"]:
+#        return pions["pion1b"]
+#    if x == ["pion","noir"]:
+#        return pions[]
+#    if x == ["tour","blanc"]:
+#        return pions[]
+#    if x == ["tour","noir"]:
+#        return pions[]
+#    if x == ["cavalier","blanc"]:
+#        return pions[]
+#    if x == ["cavalier","noir"]:
+#        return pions[]
+#    if x == ["fou","blanc"]:
+#        return pions[]
+#    if x == ["fou","noir"]:
+#        return pions[]
+#    if x == ["reine","blanc"]:
+#        return pions[]
+#    if x == ["reine","noir"]:
+#        return pions[]
+#    if x == ["roi","blanc"]:
+#        return pions[]
+#   if x == ["roi","noir"]:
+#        return pions[]
+#    if x == ["",""]:
+#        return ""
+#    return ""
+
 def Pions(x):
     if x == ["pion","blanc"]:
-        return pions["pion1b"]
+        return pygame.image.load("pion_blanc.png")
     if x == ["pion","noir"]:
-        return pions[]
+        return pygame.image.load("pion_noir.png")
     if x == ["tour","blanc"]:
-        return pions[]
+        return pygame.image.load("tour_blanc.png")
     if x == ["tour","noir"]:
-        return pions[]
+        return pygame.image.load("tour_noir.png")
     if x == ["cavalier","blanc"]:
-        return pions[]
+        return pygame.image.load("cavalier_blanc.png")
     if x == ["cavalier","noir"]:
-        return pions[]
+        return pygame.image.load("cavalier_noir.png")
     if x == ["fou","blanc"]:
-        return pions[]
+        return pygame.image.load("fou_blanc.png")
     if x == ["fou","noir"]:
-        return pions[]
+        return pygame.image.load("fou_noir.png")
     if x == ["reine","blanc"]:
-        return pions[]
+        return pygame.image.load("reine_blanc.png")
     if x == ["reine","noir"]:
-        return pions[]
+        return pygame.image.load("reine_noir.png")
     if x == ["roi","blanc"]:
-        return pions[]
+        return pygame.image.load("roi_blanc.png")
     if x == ["roi","noir"]:
-        return pions[]
+        return pygame.image.load("roi_noir.png")
     if x == ["",""]:
-        return ""
-    return ""
-
+        return pygame.image.load("vide.png")
+    return pygame.image.load("vide.png")
 
 def affichage():
     global Echequier
@@ -530,9 +558,9 @@ def tour(couleur):
                             for i in Cases_echiquier.keys():
                                 if Cases_echiquier[i].collidepoint(event.pos):
                                     case_selectionnee2 = i
-                            if depla_possible(case_selectionnee,case_selectionnee2):
-                                mouvement(case_selectionnee,case_selectionnee2)
-                                continuer = False
+                                if depla_possible(case_selectionnee,case_selectionnee2):
+                                    mouvement(case_selectionnee,case_selectionnee2)
+                                    continuer = False
 
 
 
