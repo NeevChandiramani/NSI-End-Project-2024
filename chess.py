@@ -426,37 +426,35 @@ def depla_possible(case_dep,case_ari):
     else:
         return False
 
-#def Pions(x):
+def Pions(x):
     if x == ["pion","blanc"]:
-        return pygame.image.load("Sans titre.png")
+        return pygame.image.load("pion_blanc.png")
     if x == ["pion","noir"]:
-        return "♟"
+        return pygame.image.load("pion_noir.png")
     if x == ["tour","blanc"]:
-        return "♖"
+        return pygame.image.load("tour_blanc.png")
     if x == ["tour","noir"]:
-        return "♜"
+        return pygame.image.load("tour_noir.png")
     if x == ["cavalier","blanc"]:
-        return "♘"
+        return pygame.image.load("cavalier_blanc.png")
     if x == ["cavalier","noir"]:
-        return "♞", 
+        return pygame.image.load("cavalier_noir.png")
     if x == ["fou","blanc"]:
-        return "♗"
+        return pygame.image.load("fou_blanc.png")
     if x == ["fou","noir"]:
-        return "♝"
+        return pygame.image.load("fou_noir.png")
     if x == ["reine","blanc"]:
-        return "♕"
+        return pygame.image.load("reine_blanc.png")
     if x == ["reine","noir"]:
-        return "♛"
+        return pygame.image.load("reine_noir.png")
     if x == ["roi","blanc"]:
-        return "♔"
+        return pygame.image.load("roi_blanc.png")
     if x == ["roi","noir"]:
-        return "♚"
+        return pygame.image.load("roi_noir.png")
     if x == ["",""]:
         return ""
     return ""
 
-def Pions(x):
-    return pygame.image.load("Sans titre.png")
 
 def affichage():
     global Echequier
@@ -515,6 +513,17 @@ quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_r
 
 # Update the display
 pygame.display.update()
+
+def joueurs():
+    global Echequier
+    n = 0
+    joueur1 = "blanc"
+    joueur2 = "noir"
+    continuer = True
+    while continuer : 
+        if n % 2 == 0 : 
+            for i in Echequier.keys :
+                if Echequier[i][1] == "blanc":
 
 
 # Function for the main loop
