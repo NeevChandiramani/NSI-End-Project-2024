@@ -432,29 +432,29 @@ def depla_possible(case_dep,case_ari):
 
 def Pions(x):
     if x == ["pion","blanc"]:
-        return pygame.image.load("pion_blanc.png")
+        return pions["pion1b"]
     if x == ["pion","noir"]:
-        return pygame.image.load("pion_noir.png")
+        return pions[]
     if x == ["tour","blanc"]:
-        return pygame.image.load("tour_blanc.png")
+        return pions[]
     if x == ["tour","noir"]:
-        return pygame.image.load("tour_noir.png")
+        return pions[]
     if x == ["cavalier","blanc"]:
-        return pygame.image.load("cavalier_blanc.png")
+        return pions[]
     if x == ["cavalier","noir"]:
-        return pygame.image.load("cavalier_noir.png")
+        return pions[]
     if x == ["fou","blanc"]:
-        return pygame.image.load("fou_blanc.png")
+        return pions[]
     if x == ["fou","noir"]:
-        return pygame.image.load("fou_noir.png")
+        return pions[]
     if x == ["reine","blanc"]:
-        return pygame.image.load("reine_blanc.png")
+        return pions[]
     if x == ["reine","noir"]:
-        return pygame.image.load("reine_noir.png")
+        return pions[]
     if x == ["roi","blanc"]:
-        return pygame.image.load("roi_blanc.png")
+        return pions[]
     if x == ["roi","noir"]:
-        return pygame.image.load("roi_noir.png")
+        return pions[]
     if x == ["",""]:
         return ""
     return ""
