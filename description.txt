@@ -1,2 +1,47 @@
 ##Description du programme 
-# --> A faire
+
+Ce projet est une implémentation d'un jeu d'échecs utilisant la bibliothèque Pygame. 
+Il vise à fournir une interface graphique pour jouer aux échecs, en affichant le plateau et les pièces, et en permettant aux utilisateurs de déplacer les pièces selon les règles du jeu d'échecs.
+Notre programme permet de jouer à deux joueurs, en alternant les tours pour déplacer les pièces sur le plateau. 
+Il gère également les règles du jeu d'échecs, telles que les déplacements légaux des pièces, les prises, les échecs et les échecs et mat.
+
+
+Fonctionnalités principales :
+Ouverture d'une page web :
+
+À l'initialisation du script, une page web dédiée aux échecs (http://chess.neevchandiramani.com) est ouverte automatiquement dans le navigateur par défaut de l'utilisateur.
+Configuration du plateau d'échecs :
+
+Le plateau d'échecs est représenté par une grille de 8x8 cases, chaque case étant une instance de pygame.Rect. Les positions des cases sont déterminées par des coordonnées initiales et des calculs pour chaque colonne et ligne.
+Les couleurs des cases sont alternées en blanc et noir pour représenter fidèlement un plateau d'échecs standard.
+Initialisation des pièces :
+
+Les pièces d'échecs (pions, tours, cavaliers, fous, rois et reines) sont initialement placées sur le plateau dans leur position de départ classique.
+Les images des pièces sont chargées à partir de fichiers image (par exemple, pion_noir.png, tour_blanc.png, etc.).
+Mouvements des pièces :
+
+Une fonction mouvement(de_la, vers_la) permet de déplacer une pièce d'une case à une autre sur le plateau.
+Une autre fonction deplas(s) génère une liste de mouvements légaux pour une pièce donnée sur une case spécifique, en fonction de son type (pion, tour, cavalier, fou, roi ou reine) et de sa couleur.
+Logique des déplacements :
+
+Chaque type de pièce a des règles spécifiques pour les déplacements, qui sont implémentées dans la fonction deplas(s). Par exemple :
+Les pions peuvent avancer d'une case ou deux cases au premier coup, et capturer en diagonale.
+Les tours peuvent se déplacer horizontalement ou verticalement sur n'importe quelle distance jusqu'à rencontrer une autre pièce.
+Les cavaliers se déplacent en forme de "L".
+Les fous se déplacent en diagonale.
+Les rois et les reines ont des mouvements combinés des autres pièces.
+Détection d'Échec:
+
+La fonction echec(couleur) vérifie si le roi de la couleur spécifiée est en échec, c'est-à-dire menacé par une pièce adverse. Elle parcourt l'échiquier pour trouver la position du roi et vérifie ensuite si une pièce adverse peut atteindre cette position.
+Détection d'Échec et Mat:
+
+La fonction echec_et_mat(couleur) détermine si le roi de la couleur spécifiée est en échec et mat. Elle vérifie si le roi peut se déplacer pour sortir de l'échec ou si une autre pièce peut intercepter ou capturer la pièce menaçante. Si aucune de ces actions n'est possible et que le roi est attaqué par au moins deux pièces adverses, l'échec et mat est déclaré.
+Déplacement des Pièces:
+
+La fonction depla_possible(case_dep, case_ari) valide si un mouvement est légal en vérifiant les règles de déplacement des pièces. Elle s'assure également que le roi ne soit
+
+
+
+
+
+Certains bugs sont à signaler sur le rock, le en passant et le temps qui n'est pas compté. Les boutons du menu du démarrage du jeu ne fonctionnent pas très bien mais l'on peut toujours les utiliser si l'on sait où ils sont positionnés. 
