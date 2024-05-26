@@ -122,7 +122,7 @@ def deplas(s):
                     r.append(chr(colonne-1+65)+str(ligne+1-1))
                 if colonne+1 < 8 and ligne-1 >=0 and case_c_l(colonne+1,ligne-1)[1] == "blanc":
                     r.append(chr(colonne+1+65)+str(ligne+1-1))
-                if ligne == 7 and case_c_l(colonne,ligne-2) == vide:
+                if ligne == 6 and case_c_l(colonne,ligne-2) == vide:
                     r.append(chr(colonne+65)+str(ligne-2+1))
         elif typ == "tour":
             continuer = True
