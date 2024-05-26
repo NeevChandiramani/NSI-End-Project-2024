@@ -514,27 +514,36 @@ quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_r
 # Update the display
 pygame.display.update()
 
-def joueurs():
+def tour(couleur):
     global Echequier
-    n = 0
-    joueur1 = "blanc"
-    joueur2 = "noir"
+    global Cases_echiquier
     continuer = True
     while continuer : 
-        if n % 2 == 0 : 
-            for i in Echequier.keys :
-                if Echequier[i][1] == "blanc":
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for i in Cases_echiquier.keys():
+                    if Cases_echiquier[i].collidepoint(event.pos):
+                        case_selectionnee = i
+                if Echequier[case_selectionnee][1] != couleur:
+                    
+
 
 
 # Function for the main loop
 def main_loop():
     print("starting game")
     affichage()
+    continuer = True
     if event.type == pygame.QUIT:
         pygame.quit()
         sys.exit()
     pygame.display.update()
-
+    while continuer : 
+        if n % 2 == 0 : 
+            for i in Echequier.keys :
+                if Echequier[i][1] == "blanc":
+                    print("C'est le tour des blancs")
+                    tour("blanc")
 
  # Wait for the user to close the window or click on a button
  # loop for the menu
