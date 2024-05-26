@@ -46,7 +46,7 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
 
 echiquier_surface = pygame.Surface([135, 135])
 vide = ["",""]
-
+# Define colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREY = (115, 115, 115)
@@ -69,10 +69,14 @@ Echequier = {"A1":["tour","blanc"],     "A2":["pion","blanc"],  "A3":vide,  "A4"
              "G1":["cavalier","blanc"], "G2":["pion","blanc"],  "G3":vide,  "G4":vide,  "G5":vide,  "G6":vide,  "G7":["pion","noir"],   "G8":["cavalier","noir"],
              "H1":["tour","blanc"],     "H2":["pion","blanc"],  "H3":vide,  "H4":vide,  "H5":vide,  "H6":vide,  "H7":["pion","noir"],   "H8":["tour","noir"]}
 
-pions = {"pion1n" : "♟", "pion2n" : "♟", "pion3n" : "♟", "pion4n" : "♟", "pion5n" : "♟", "pion6n" : "♟", "pion7n" : "♟", "pion8n" : "♟", 
-         "pion1b" : "♙", "pion2b" : "♙", "pion3b" : "♙", "pion4b" : "♙", "pion5b" : "♙", "pion6b" : "♙", "pion7b" : "♙", "pion8b" : "♙", 
-         "tour1n": "♜", "cavalier1n": "♞", "fou1n": "♝", "reinen": "♛", "roin": "♚", "fou2n": "♝", "cavalier2n": "♞", "tour2n": "♜",
-         "tour1b": "♖", "cavalier1b": "♘", "fou1b": "♗", "reineb": "♕", "roib": "♔", "fou2b": "♗", "cavalier2b": "♘", "tour2b": "♖"} 
+pions = {"pion1n" : pygame.image.load("pion_noir.png"), "pion2n" : pygame.image.load("pion_noir.png"), "pion3n" : pygame.image.load("pion_noir.png"), "pion4n" : pygame.image.load("pion_noir.png"), 
+         "pion5n" : pygame.image.load("pion_noir.png"), "pion6n" : pygame.image.load("pion_noir.png"), "pion7n" : pygame.image.load("pion_noir.png"), "pion8n" : pygame.image.load("pion_noir.png"), 
+         "pion1b" : pygame.image.load("pion_blanc.png"), "pion2b" : pygame.image.load("pion_blanc.png"), "pion3b" : pygame.image.load("pion_blanc.png"), "pion4b" : pygame.image.load("pion_blanc.png"), 
+         "pion5b" : pygame.image.load("pion_blanc.png"), "pion6b" : pygame.image.load("pion_blanc.png"), "pion7b" : pygame.image.load("pion_blanc.png"), "pion8b" : pygame.image.load("pion_blanc.png"), 
+         "tour1n": pygame.image.load("tour_noir.png"), "cavalier1n": pygame.image.load("cavalier_noir.png"), "fou1n": pygame.image.load("fou_noir.png"), "reinen": pygame.image.load("reine_noir.png"), 
+         "roin": pygame.image.load("roi_noir.png"), "fou2n": pygame.image.load("fou_noir.png"), "cavalier2n": pygame.image.load("cavalier_noir.png"), "tour2n": pygame.image.load("tour_noir.png"),
+         "tour1b": pygame.image.load("tour_blanc.png"), "cavalier1b": pygame.image.load("cavalier_blanc.png"), "fou1b": pygame.image.load("fou_blanc.png"), "reineb": pygame.image.load("reine_blanc.png"), 
+         "roib": pygame.image.load("roi_blanc.png"), "fou2b": pygame.image.load("fou_blanc.png"), "cavalier2b": pygame.image.load("cavalier_blanc.png"), "tour2b": pygame.image.load("tour_blanc.png")} 
 
 Echiquier_pions = {"♟" : Echequier["G1"], "♟" : Echequier["G2"], "♟" : Echequier["G3"], "♟" : Echequier["G4"], "♟" : Echequier["G5"], "♟" : Echequier["G6"], "♟" : Echequier["G7"], "♟" : Echequier["G8"],
                    "♙" : Echequier["B1"], "♙" : Echequier["B2"], "♙" : Echequier["B3"], "♙" : Echequier["B4"], "♙" : Echequier["B5"], "♙" : Echequier["B6"], "♙" : Echequier["B7"], "♙" : Echequier["B8"], 
@@ -466,23 +470,19 @@ def affichage():
         pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
         screen.blit(echiquier_surface, Cases_echiquier[i])
         screen.blit(casee, Cases_echiquier[i])
-        screen.blit(Pions(Echequier[i]),Cases_echiquier[i])
+        screen.blit(echiquier_surface, Pions(Echequier[i]))
 
 
 ## Pygame
 
 pygame.init()
 
-# Load the image
 menu = pygame.image.load("menu_img.jpg")
 
 # Set the display mode
 screen = pygame.display.set_mode([1920, 1080])
 
-# Set the title of the window
 pygame.display.set_caption("Menu de démarrage")
-
-# Define colors
 
 
 # Define font
@@ -502,7 +502,7 @@ screen.blit(menu, (0, 0))
 screen.blit(start_text, (text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()))
 text_rect.move_ip(0, 70)  # Adjusted vertical position
 screen.blit(quit_text, (text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height()))
-# explain
+
 
 # define buttons positions
 start_button = pygame.Rect((text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()),((start_text.get_width()),(start_text.get_height())))
@@ -551,6 +551,9 @@ def main_loop():
                 if Echequier[i][1] == "blanc":
                     print("C'est le tour des blancs")
                     tour("blanc")
+                    continuer == False
+    
+    
     
 
  # Wait for the user to close the window or click on a button

@@ -1,12 +1,12 @@
 // Les tâches â se départager -->
 
-// Tâche : création de l'arborescence du projet -->
+// Tâches :
 
  - chaque pion a un tuple qui lui attribue ses propriétés (couleur, type)
 
 Répartition des tâches :
 
-Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA)
+Neev : - Créer un menu clickable pour lancer/arrêter une partie, choisir mode de jeu (a 2 en local ou contre IA) --> fait
 
 
 Erwan : - refonte du programme --> c'est fait
