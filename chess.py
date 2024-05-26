@@ -3,8 +3,8 @@ import webbrowser
 import time
 import sys
 
-webbrowser.open('http://chess.neevchandiramani.com')
-time.sleep(3)
+#webbrowser.open('http://chess.neevchandiramani.com')
+#time.sleep(3)
 
 taille_écran = (1920, 1080)
 taille_case = 1080 / 8
@@ -76,7 +76,7 @@ pions = {"pion1n" : "♟", "pion2n" : "♟", "pion3n" : "♟", "pion4n" : "♟",
 
 Echiquier_pions = {"♟" : Echequier["G1"], "♟" : Echequier["G2"], "♟" : Echequier["G3"], "♟" : Echequier["G4"], "♟" : Echequier["G5"], "♟" : Echequier["G6"], "♟" : Echequier["G7"], "♟" : Echequier["G8"],
                    "♙" : Echequier["B1"], "♙" : Echequier["B2"], "♙" : Echequier["B3"], "♙" : Echequier["B4"], "♙" : Echequier["B5"], "♙" : Echequier["B6"], "♙" : Echequier["B7"], "♙" : Echequier["B8"], 
-
+}
 
 def colonne_num(case):
     return ord(case[0])-65
@@ -426,16 +426,47 @@ def depla_possible(case_dep,case_ari):
     else:
         return False
 
+def Pions(x):
+    if x == ["pion","blanc"]:
+        return "♙"
+    if x == ["pion","noir"]:
+        return "♟"
+    if x == ["tour","blanc"]:
+        return "♖"
+    if x == ["tour","noir"]:
+        return "♜"
+    if x == ["cavalier","blanc"]:
+        return "♘"
+    if x == ["cavalier","noir"]:
+        return "♞", 
+    if x == ["fou","blanc"]:
+        return "♗"
+    if x == ["fou","noir"]:
+        return "♝"
+    if x == ["reine","blanc"]:
+        return "♕"
+    if x == ["reine","noir"]:
+        return "♛"
+    if x == ["roi","blanc"]:
+        return "♔"
+    if x == ["roi","noir"]:
+        return "♚"
+    if x == ["",""]:
+        return ""
+    return ""
 
 def affichage():
+    global Echequier
     global Cases_echiquier
     global Color_Echequier
     screen.fill(GREY)
     for i in Cases_echiquier.keys():
+        pion = font.render(Pions(Echequier[i]), True, (255,50,63))
         casee = font.render(i, True, GREY)
         pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
         screen.blit(echiquier_surface, Cases_echiquier[i])
         screen.blit(casee, Cases_echiquier[i])
+        screen.blit(pion,Cases_echiquier[i])
 
 
 ## Pygame
@@ -486,7 +517,6 @@ pygame.display.update()
 
 # Function for the main loop
 def main_loop():
-    global Color_Echequier
     print("starting game")
     affichage()
     if event.type == pygame.QUIT:
