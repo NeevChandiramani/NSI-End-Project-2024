@@ -432,22 +432,21 @@ def depla_possible(case_dep,case_ari):
     
 def promotion(case_pion):
     global Echequier
-    petit_reine = pygame.Surface(135, 135)
-    petit_cavalier = pygame.Surface(135, 135)
-    petit_tour = pygame.Surface(135, 135)
-    petit_fou = pygame.Surface(135, 135)
-    promotion_text = font.render("Choisissez votre promotion")
+    petit_reine = pygame.Surface([135, 135])
+    petit_cavalier = pygame.Surface([135, 135])
+    petit_tour = pygame.Surface([135, 135])
+    petit_fou = pygame.Surface([135, 135])
+    promotion_text = font.render("Choisissez votre promotion", True , WHITE)
     screen.blit(promotion_text, (10, 100))
     reine = pygame.image.load("reine_noir.png")
     tour = pygame.image.load("tour_noir.png")
     cavalier = pygame.image.load("cavalier_noir.png")
     fou = pygame.image.load("fou_noir.png")
-    screen.blit(petit_reine, reine, (10, 120))
-    screen.blit(petit_fou, fou, (30, 255)) 
-    screen.blit(petit_cavalier, cavalier, (30, 390))
-    screen.blit(petit_tour, tour, (30, 525))
+    screen.blit(reine, petit_reine)
+    screen.blit(fou, petit_fou) 
+    screen.blit(cavalier, petit_cavalier)
+    screen.blit(tour, petit_tour)
     pygame.display.update()
-
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if petit_reine.collidepoint(event.pos):
@@ -571,10 +570,12 @@ def tour(couleur):
                     if depla_possible(case_selectionnee,case_selectionnee2):
                         mouvement(case_selectionnee,case_selectionnee2)
                         continuer = False
-                        if Echequier[case_selectionnee][1] == "pion":
-                            if Echequier[case_selectionnee][2] == "blanc" and case_selectionnee2[1] == "8":
+                        if Echequier[case_selectionnee2][0] == "pion":
+                            if Echequier[case_selectionnee2][1] == "blanc" and case_selectionnee2[1] == "8":
+                                print("promo")
                                 promotion(case_selectionnee2)
-                            if Echequier[case_selectionnee][2] == "noir" and case_selectionnee2[1] == "1":
+                            if Echequier[case_selectionnee][1] == "noir" and case_selectionnee2[1] == "1":
+                                print('promo')
                                 promotion(case_selectionnee2)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 for i in Cases_echiquier.keys():
