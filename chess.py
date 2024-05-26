@@ -45,6 +45,7 @@ Cases_echiquier = {"A1": pygame.Rect((positionx, positiony), (taille_case, taill
                    "H7": pygame.Rect((positionx + 135 * 6, positiony - 135 * 7), (taille_case, taille_case)), "H8": pygame.Rect((positionx + 135 * 7, positiony - 135 * 7), (taille_case, taille_case)),}
 
 echiquier_surface = pygame.Surface([135, 135])
+
 vide = ["",""]
 # Define colors
 WHITE = (255, 255, 255)
@@ -374,19 +375,19 @@ def deplas(s):
 def echec(couleur):
     global Echequier
     for i in Echequier.keys():
-        if Echequier[i] == ("roi",couleur):
+        if Echequier[i] == ["roi",couleur]:
             case_roi = i
     for i in Echequier.keys():
         if Echequier[i][1] != couleur and Echequier[i][1] != "":
-            for i in range(len(deplas(i))):
-                if deplas(i)[i] == case_roi :
+            for j in range(len(deplas(i))):
+                if deplas(i)[j] == case_roi :
                     return True
     return False
 
 def echec_et_mat(couleur):
     global Echequier
     for i in Echequier.keys():
-        if Echequier[i] == ("roi",couleur):
+        if Echequier[i] == ["roi",couleur]:
             case_roi = i
     for i in range(len(deplas(case_roi))):
         if depla_possible(case_roi,deplas(case_roi)[i]):
@@ -429,6 +430,38 @@ def depla_possible(case_dep,case_ari):
             return True
     else:
         return False
+    
+def promotion(case_pion):
+    global Echequier
+    petit_reine = pygame.Surface(135, 135)
+    petit_cavalier = pygame.Surface(135, 135)
+    petit_tour = pygame.Surface(135, 135)
+    petit_fou = pygame.Surface(135, 135)
+    promotion_text = font.render("Choisissez votre promotion")
+    screen.blit(promotion_text, (10, 100))
+    reine = pygame.image.load("reine_noir.png")
+    tour = pygame.image.load("tour_noir.png")
+    cavalier = pygame.image.load("cavalier_noir.png")
+    fou = pygame.image.load("fou_noir.png")
+    screen.blit(petit_reine, reine)
+    screen.blit(petit_fou, fou)
+    screen.blit(petit_cavalier, cavalier)
+    screen.blit(petit_tour, tour)
+    pygame.display.update()
+
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if petit_reine.collidepoint(event.pos):
+                Echequier[case_pion][0] = "reine"
+            if petit_cavalier.collidepoint(event.pos):
+                Echequier[case_pion][0] = "cavalier"
+            if petit_tour.collidepoint(event.pos):
+                Echequier[case_pion][0] = "tour"
+            if petit_fou.collidepoint(event.pos):
+                Echequier[case_pion][0] = "fou"
+
+    
+    
 
 def Pions(x):
     if x == ["pion","blanc"]:
@@ -497,6 +530,7 @@ text_rect.center = image_rect.center
 # Define text
 start_text = font.render("Start Game", True, WHITE)
 quit_text = font.render("Quit", True, WHITE)
+echec_et_mat_text = font.render("Echec et Mat !", True, WHITE)
 
 # Blit the image and buttons on the screen
 screen.blit(menu, (0, 0))
@@ -516,6 +550,9 @@ quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_r
 pygame.display.update()
 
 def tour(couleur):
+    tour_text = font.render("C'est le tour des " + couleur + "s", True, WHITE)
+    screen.blit(tour_text, (10,10))
+    pygame.display.update()
     global Echequier
     global Cases_echiquier
     continuer = True
@@ -530,14 +567,22 @@ def tour(couleur):
                     for i in Cases_echiquier.keys():
                         if Cases_echiquier[i].collidepoint(event.pos):
                             case_selectionnee2 = i
+                    if Echequier[case_selectionnee2][1] == couleur:
+                        case_selectionnee = case_selectionnee2
                     if depla_possible(case_selectionnee,case_selectionnee2):
                         mouvement(case_selectionnee,case_selectionnee2)
                         continuer = False
+                        if Echequier[case_selectionnee][1] == "pion":
+                            if Echequier[case_selectionnee][2] == "blanc" and case_selectionnee2[1] == "8":
+                                promotion(case_selectionnee2)
+                            if Echequier[case_selectionnee][2] == "noir" and case_selectionnee2[1] == "1":
+                                promotion(case_selectionnee2)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 for i in Cases_echiquier.keys():
                     if Cases_echiquier[i].collidepoint(event.pos):
                         case_selectionnee = i
                         print(i, Echequier[i])
+
 
 
 
@@ -553,15 +598,29 @@ def main_loop():
     pygame.display.update()
     n = 0
     while continuer : 
-        if n % 2 == 0 : 
-            for i in Echequier.keys():
-                if Echequier[i][1] == "blanc":
-                    print("C'est le tour des blancs")
-                    tour("blanc")
-                    affichage()
-                    continuer == False
-    
-    
+        print("C'est le tour des blancs")
+        tour("blanc")
+        affichage()
+        if echec_et_mat("noir"):
+            continuer = False
+            print("Les blancs ont gagné")
+            screen.blit(echec_et_mat_text, (10, 100))
+            pygame.display.update()
+            time.sleep(5)
+            pygame.quit()
+            sys.exit()
+        else:
+            print("C'est le tour des noirs")
+            tour("noir")
+            affichage()
+            if echec_et_mat("blanc"):
+                continuer = False
+                print("Les noirs ont gagné")
+                screen.blit(echec_et_mat_text, (10, 10))
+                pygame.display.update()
+                time.sleep(5)
+                pygame.quit()
+                sys.exit()
     
 
  # Wait for the user to close the window or click on a button
