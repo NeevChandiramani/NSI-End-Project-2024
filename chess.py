@@ -426,9 +426,9 @@ def depla_possible(case_dep,case_ari):
     else:
         return False
 
-def Pions(x):
+#def Pions(x):
     if x == ["pion","blanc"]:
-        return "♙"
+        return pygame.image.load("Sans titre.png")
     if x == ["pion","noir"]:
         return "♟"
     if x == ["tour","blanc"]:
@@ -455,18 +455,20 @@ def Pions(x):
         return ""
     return ""
 
+def Pions(x):
+    return pygame.image.load("Sans titre.png")
+
 def affichage():
     global Echequier
     global Cases_echiquier
     global Color_Echequier
     screen.fill(GREY)
     for i in Cases_echiquier.keys():
-        pion = font.render(Pions(Echequier[i]), True, (255,50,63))
         casee = font.render(i, True, GREY)
         pygame.Surface.fill(echiquier_surface, Color_Echequier[i])
         screen.blit(echiquier_surface, Cases_echiquier[i])
         screen.blit(casee, Cases_echiquier[i])
-        screen.blit(pion,Cases_echiquier[i])
+        screen.blit(Pions(Echequier[i]),Cases_echiquier[i])
 
 
 ## Pygame
