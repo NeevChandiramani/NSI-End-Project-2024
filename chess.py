@@ -443,10 +443,10 @@ def promotion(case_pion):
     tour = pygame.image.load("tour_noir.png")
     cavalier = pygame.image.load("cavalier_noir.png")
     fou = pygame.image.load("fou_noir.png")
-    screen.blit(petit_reine, reine)
-    screen.blit(petit_fou, fou)
-    screen.blit(petit_cavalier, cavalier)
-    screen.blit(petit_tour, tour)
+    screen.blit(petit_reine, reine, (10, 120))
+    screen.blit(petit_fou, fou, (30, 255)) 
+    screen.blit(petit_cavalier, cavalier, (30, 390))
+    screen.blit(petit_tour, tour, (30, 525))
     pygame.display.update()
 
     for event in pygame.event.get():
@@ -601,6 +601,10 @@ def main_loop():
         print("C'est le tour des blancs")
         tour("blanc")
         affichage()
+        if echec("noir"):
+            text_echec = font.render("Echec au noir", True, WHITE)
+            screen.blit(text_echec, (10, 100))
+            pygame.display.update()
         if echec_et_mat("noir"):
             continuer = False
             print("Les blancs ont gagné")
@@ -613,6 +617,10 @@ def main_loop():
             print("C'est le tour des noirs")
             tour("noir")
             affichage()
+            if echec("blanc"):
+                text_echec = font.render("Echec au blanc", True, WHITE)
+                screen.blit(text_echec, (10, 100))
+                pygame.display.update()
             if echec_et_mat("blanc"):
                 continuer = False
                 print("Les noirs ont gagné")
