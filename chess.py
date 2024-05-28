@@ -3,8 +3,8 @@ import webbrowser
 import time
 import sys
 
-webbrowser.open('http://chess.neevchandiramani.com')
-time.sleep(3)
+#webbrowser.open('http://chess.neevchandiramani.com')
+#time.sleep(3)
 
 taille_écran = (1920, 1080)
 taille_case = 1080 / 8
@@ -519,30 +519,59 @@ font = pygame.font.SysFont(None, 40)
 
 # Define button dimensions and positions
 image_rect = menu.get_rect()
-text_rect = pygame.Rect((0, 0), (200, 50))
-text_rect.center = image_rect.center
+text_start_rect = pygame.Rect((0, 0), (200, 50))
+text_start_rect.center = image_rect.center
+text_quit_rect = pygame.Rect((0, 0), (200, 50))
+text_quit_rect.center = image_rect.center
+text_quit_rect.move_ip(0, 70)
 
 # Define text
 start_text = font.render("Start Game", True, WHITE)
 quit_text = font.render("Quit", True, WHITE)
-echec_et_mat_text = font.render("Echec et Mat !", True, WHITE)
 
 # Blit the image and buttons on the screen
 screen.blit(menu, (0, 0))
-screen.blit(start_text, (text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()))
-text_rect.move_ip(0, 70)  # Adjusted vertical position
-screen.blit(quit_text, (text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height()))
+screen.blit(start_text, (text_start_rect.centerx - start_text.get_width() / 2, text_start_rect.centery - start_text.get_height()))
+screen.blit(quit_text, (text_quit_rect.centerx - quit_text.get_width() / 2, text_quit_rect.centery - quit_text.get_height()))
 
 
 # define buttons positions
-start_button = pygame.Rect((text_rect.centerx - start_text.get_width() / 2, text_rect.centery - start_text.get_height()),((start_text.get_width()),(start_text.get_height())))
-quit_button = pygame.Rect((text_rect.centerx - quit_text.get_width() / 2, text_rect.centery - quit_text.get_height()),(quit_text.get_width(),quit_text.get_height()))
+start_button = pygame.Rect((text_start_rect.centerx - start_text.get_width() / 2, text_start_rect.centery - start_text.get_height()),((start_text.get_width()),(start_text.get_height())))
+quit_button = pygame.Rect((text_quit_rect.centerx - quit_text.get_width() / 2, text_quit_rect.centery - quit_text.get_height()),(quit_text.get_width(),quit_text.get_height()))
 #explain --> Pour un argument rect, faut 4 variables, les 2 premières sont les coordonnées du coin supérieur gauche et les 2 suivantes sont la largeur et la hauteur du rectangle séparés par les virgules
 #Rect(left, top, width, height)
 
 
 # Update the display
 pygame.display.update()
+
+def affiche_menu():
+    menu = pygame.image.load("menu_img.jpg")
+    image_rect = menu.get_rect()
+    text_start_rect = pygame.Rect((0, 0), (200, 50))
+    text_start_rect.center = image_rect.center
+    text_quit_rect = pygame.Rect((0, 0), (200, 50))
+    text_quit_rect.center = image_rect.center
+    text_quit_rect.move_ip(0, 70)
+
+    # Define text
+    start_text = font.render("Start Game", True, WHITE)
+    quit_text = font.render("Quit", True, WHITE)
+
+    # Blit the image and buttons on the screen
+    screen.blit(menu, (0, 0))
+    screen.blit(start_text, (text_start_rect.centerx - start_text.get_width() / 2, text_start_rect.centery - start_text.get_height()))
+    screen.blit(quit_text, (text_quit_rect.centerx - quit_text.get_width() / 2, text_quit_rect.centery - quit_text.get_height()))
+
+
+    # define buttons positions
+    start_button = pygame.Rect((text_start_rect.centerx - start_text.get_width() / 2, text_start_rect.centery - start_text.get_height()),((start_text.get_width()),(start_text.get_height())))
+    quit_button = pygame.Rect((text_quit_rect.centerx - quit_text.get_width() / 2, text_quit_rect.centery - quit_text.get_height()),(quit_text.get_width(),quit_text.get_height()))
+    #explain --> Pour un argument rect, faut 4 variables, les 2 premières sont les coordonnées du coin supérieur gauche et les 2 suivantes sont la largeur et la hauteur du rectangle séparés par les virgules
+    #Rect(left, top, width, height)
+    pygame.display.update()
+
+
 
 def tour(couleur):
     tour_text = font.render("C'est le tour des " + couleur + "s", True, WHITE)
@@ -589,9 +618,6 @@ def main_loop():
     pygame.display.set_caption("Jeu d'échec")
     affichage()
     continuer = True
-    if event.type == pygame.QUIT:
-        pygame.quit()
-        sys.exit()
     pygame.display.update()
     n = 0
     while continuer : 
@@ -599,13 +625,13 @@ def main_loop():
         tour("blanc")
         affichage()
         if echec_et_mat("noir"):
+            echec_et_mat_text = font.render("Echec et Mat !", True, WHITE)
             continuer = False
             print("Les blancs ont gagné")
             screen.blit(echec_et_mat_text, (100, 100))
             pygame.display.update()
-            time.sleep(5)
-            pygame.quit()
-            sys.exit()
+            time.sleep(3)
+            menu_loop()
         elif echec("noir"):
             text_echec = font.render("Echec au noir", True, WHITE)
             screen.blit(text_echec, (100, 100))
@@ -615,13 +641,13 @@ def main_loop():
             tour("noir")
             affichage()
             if echec_et_mat("blanc"):
+                echec_et_mat_text = font.render("Echec et Mat !", True, WHITE)
                 continuer = False
                 print("Les noirs ont gagné")
                 screen.blit(echec_et_mat_text, (100, 100))
                 pygame.display.update()
-                time.sleep(5)
-                pygame.quit()
-                sys.exit()
+                time.sleep(3)
+                menu_loop()
             elif echec("blanc"):
                 text_echec = font.render("Echec au blanc", True, WHITE)
                 screen.blit(text_echec, (100, 100))
@@ -631,15 +657,19 @@ def main_loop():
  # Wait for the user to close the window or click on a button
  # loop for the menu
 # Wait for the user to close the window or click on a button
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if start_button.collidepoint(event.pos):
-                main_loop()
-            if quit_button.collidepoint(event.pos):
+def menu_loop():
+    affiche_menu()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-                ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher -- Essaie de le faire rouler
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if start_button.collidepoint(event.pos):
+                    main_loop()
+                if quit_button.collidepoint(event.pos):
+                    pygame.quit()
+                    sys.exit()
+                    ### LE IF DE START GAME NE FONCTIONNE PAS -- Je n'arrive pas à le faire marcher -- Essaie de le faire rouler
+
+menu_loop()
