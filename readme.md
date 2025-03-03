@@ -16,7 +16,7 @@ To install and set up the project, follow these steps:
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/NeevChandiramani/NSI-End-Project.git
+    git clone https://github.com/NeevChandiramani/NSI-End-Project-2024.git
     ```
 2. Navigate to the project directory:
     ```sh
